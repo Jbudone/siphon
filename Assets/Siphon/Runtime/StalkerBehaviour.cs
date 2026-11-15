@@ -12,12 +12,13 @@ namespace Siphon
         public Vector3 InvestigatedPoint { get; private set; }
         private BotBrain brain;
         private Renderer[] eyes;
-        private readonly MaterialPropertyBlock tint = new MaterialPropertyBlock();
+        private MaterialPropertyBlock tint;
         private float windupUntil, pounceUntil, readyAt, searchUntil;
         private Vector3 pouncePoint;
         private bool bitten;
         private void Awake()
         {
+            tint = new MaterialPropertyBlock();
             brain = GetComponent<BotBrain>();
             var found = new System.Collections.Generic.List<Renderer>();
             foreach (var visual in GetComponentsInChildren<Renderer>())

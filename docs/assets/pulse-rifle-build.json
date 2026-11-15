@@ -1,0 +1,32 @@
+{
+  "base_revision": "d8d735e",
+  "build_method": "Siphon.Editor.RifleAssetBuilder.BuildCandidate",
+  "build_path": "Builds/SiphonCandidate/Siphon.x86_64",
+  "unity": "6000.6.0f1",
+  "built_from_uncommitted_slice": true,
+  "sha256": {
+    "Assets/Siphon/Art/PulseRifle/normal.png": "c90d9cc2d06d6517314d48321bd1856a8190af9aeef632802970da87776e478e",
+    "Assets/Siphon/Art/PulseRifle/PulseRifle.mat": "0a063258f6aaa338961ef77255bfcbc3dadb653d9eaaa7652e6a3fdf44474e4a",
+    "Assets/Siphon/Art/PulseRifle/normal.png.meta": "2b2357f82568e61e9c06d27ff47185d902cfc7097e2247b85ac88cd3b1d911e9",
+    "Assets/Siphon/Art/PulseRifle/model.fbx.meta": "a2b7007b0bdc5786873628ef2b3aeb49de0470103ad2d33b2b9fe3caf32c686d",
+    "Assets/Siphon/Art/PulseRifle/model.fbx": "916c0194d567b225a4a90f8a958a10cd3965a8773002dbaed50fabed754ca70b",
+    "Assets/Siphon/Art/PulseRifle/roughness.png.meta": "88dd11475e6eb00b740dd7ed327ea354e6bacde044a435f1c6021692a8c8747a",
+    "Assets/Siphon/Art/PulseRifle/base_color.png.meta": "76ee9b0dbc11336fdbd68dd9dabcd3e24232367c4d697761a27ab7310c4f839c",
+    "Assets/Siphon/Art/PulseRifle/PulseRifle.prefab.meta": "287775a956a1fb87dca27ed526d41af57191685b58c493b65151429a5e785a1f",
+    "Assets/Siphon/Art/PulseRifle/roughness.png": "c271cb3e4eed97ed208196899df3cc814f71c20689a0e38ea540bcf4033a1cd8",
+    "Assets/Siphon/Art/PulseRifle/base_color.png": "0a632a5fb4fc0f2cf8388d6887500251b25a854217fb49caf6d4ac0dd5770ea4",
+    "Assets/Siphon/Art/PulseRifle/PulseRifle.mat.meta": "e90a1f3f9cfba3c264ba8566c7f92483619f6933bd3e8f89c4f157245c4c1f6d",
+    "Assets/Siphon/Art/PulseRifle/metallic.png": "2f040c874fbd84448a8f055d035605255bbb9eaff68d913cdeec884f829c0b0a",
+    "Assets/Siphon/Art/PulseRifle/metallic_smoothness.png.meta": "b0e8e822e4c6843ed4af1c01c87aa400824f4c84f41938f656a56564266514d4",
+    "Assets/Siphon/Art/PulseRifle/PulseRifle.prefab": "dad7b586f11aecfcbd44813dc0fbca8bf17c78ad8fda8f377762ecef179dd62e",
+    "Assets/Siphon/Art/PulseRifle/metallic_smoothness.png": "64c52a0ed91ad1288d9a040ae0e45136dc7486b5f7fbf378d3b5e852c5e6c785",
+    "Assets/Siphon/Art/PulseRifle/metallic.png.meta": "b45f56fb65b526a86016506a61e12a65aafb6998bb54993b6621a83271cdcf6f",
+    "Assets/Siphon/Editor/RifleAssetBuilder.cs": "4eb40536f51f567027eb5c3b5069aa54042acddee24bd680d05d7d64c8068a22",
+    "Assets/Siphon/Editor/AssaultSceneBuilder.cs": "c9279663e0828522f7c0764c138f3a95420709d12e57715c75c444240cbd7e12",
+    "Assets/Siphon/Runtime/WeaponPresentation.cs": "06f8f35e603151d81c5b8e405cf0a1100194f646b8155722bb24523b50d92d0c",
+    "Assets/Siphon/Runtime/StandaloneSmokeCheck.cs": "dfaf3a6545910ccd554575b22d546aa033e83b5fcdd217be8aea894e42f69fbf",
+    "Assets/Siphon/Runtime/StalkerBehaviour.cs": "117215081b48f4e88dfea89322f831704dec5794796427e6910936ef1dbba001",
+    "Assets/Siphon/Scenes/AssaultPlayground.unity": "c332bc2b21b09a8d95397e6779657d1d602c49fd2ba2bc976d16a39740f5d56c"
+  },
+  "binary_sha256": "de3009bc2c3a8a7c25f347c0c0a098a1c49dbbb6ee6ec100562e61fb50cae261"
+}

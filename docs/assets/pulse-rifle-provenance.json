@@ -1,0 +1,150 @@
+{
+  "source_base_revision": "d8d735e",
+  "observed_balances": [
+    1900,
+    1880,
+    1870
+  ],
+  "observed_costs": {
+    "preview": 20,
+    "refine": 10
+  },
+  "monthly_resets_at": 1795639708000,
+  "records": [
+    {
+      "provider": "Meshy",
+      "task_id": "01a1e181-2bca-751e-9815-3fb18f1e17fd",
+      "downloaded_at": "2026-11-15T23:19:02.455057+00:00",
+      "task": {
+        "consumed_credits": 20,
+        "created_at": 1794784703749,
+        "finished_at": 1794784734673,
+        "id": "01a1e181-2bca-751e-9815-3fb18f1e17fd",
+        "mode": "preview",
+        "model_type": "standard",
+        "name": "",
+        "progress": 100,
+        "prompt": "Original sci-fi pulse rifle for Siphon, a fast aerial team shooter. Single isolated hard-surface weapon, compact squared receiver, broad wedge barrel shroud, clearly visible circular emitter muzzle, open trigger guard, sturdy pistol grip, short shoulder stock, shallow top sight and inset energy-cell housing. Bold readable silhouette, restrained industrial field equipment, large clean surfaces and a few recessed panel seams. No hands, character, ammunition, background, floating pieces, text, logos or recognizable franchise features. Geometry only; neutral untextured model. Visual replacement only: preserve existing weapon balance, firing origin, collider and gameplay dimensions during later Unity fitting.",
+        "seed": 3328975078,
+        "started_at": 1794784703769,
+        "status": "SUCCEEDED",
+        "task_error": null,
+        "texture_prompt": "",
+        "type": "text-to-3d-preview"
+      },
+      "submission": {
+        "endpoint": "https://api.meshy.ai/openapi/v2/text-to-3d",
+        "provider": "Meshy",
+        "request": {
+          "ai_model": "meshy-7.1",
+          "geometry_resolution": "standard",
+          "mode": "preview",
+          "model_type": "standard",
+          "prompt": "Original sci-fi pulse rifle for Siphon, a fast aerial team shooter. Single isolated hard-surface weapon, compact squared receiver, broad wedge barrel shroud, clearly visible circular emitter muzzle, open trigger guard, sturdy pistol grip, short shoulder stock, shallow top sight and inset energy-cell housing. Bold readable silhouette, restrained industrial field equipment, large clean surfaces and a few recessed panel seams. No hands, character, ammunition, background, floating pieces, text, logos or recognizable franchise features. Geometry only; neutral untextured model. Visual replacement only: preserve existing weapon balance, firing origin, collider and gameplay dimensions during later Unity fitting.",
+          "should_remesh": true,
+          "target_formats": [
+            "fbx"
+          ],
+          "target_polycount": 8000,
+          "topology": "triangle"
+        },
+        "request_sha256": "e7de4032ff0591497a0783774ecc46405ce0ad4acb627f1acca48d72e51167a0",
+        "state": "submitted",
+        "submitted_at": "2026-11-15T23:18:20.993964+00:00",
+        "task_id": "01a1e181-2bca-751e-9815-3fb18f1e17fd"
+      },
+      "files": [
+        {
+          "bytes": 321356,
+          "path": "model.fbx",
+          "sha256": "5cc40d7c388aecf7c3686f64a731e3032e238acb8965cc4680d547177af189ca",
+          "source": "https://assets.meshy.ai/20a1f3a9-f341-4dfc-9878-e77bec63bf19/tasks/01a1e181-2bca-751e-9815-3fb18f1e17fd/output/model.fbx"
+        },
+        {
+          "bytes": 44471,
+          "path": "thumbnail.png",
+          "sha256": "c86d4bbd0161122e5616624d84240dd50fd10903be811436c0d0bda9b2f47ed3",
+          "source": "https://assets.meshy.ai/20a1f3a9-f341-4dfc-9878-e77bec63bf19/tasks/01a1e181-2bca-751e-9815-3fb18f1e17fd/output/preview.png"
+        }
+      ]
+    },
+    {
+      "provider": "Meshy",
+      "task_id": "01a1e182-185a-7182-8f86-e2a18314e377",
+      "downloaded_at": "2026-11-15T23:19:58.268847+00:00",
+      "task": {
+        "consumed_credits": 10,
+        "created_at": 1794784764143,
+        "finished_at": 1794784788714,
+        "id": "01a1e182-185a-7182-8f86-e2a18314e377",
+        "mode": "refine",
+        "model_type": "standard",
+        "name": "",
+        "progress": 100,
+        "prompt": "Original sci-fi pulse rifle for Siphon, a fast aerial team shooter. Single isolated hard-surface weapon, compact squared receiver, broad wedge barrel shroud, clearly visible circular emitter muzzle, open trigger guard, sturdy pistol grip, short shoulder stock, shallow top sight and inset energy-cell housing. Bold readable silhouette, restrained industrial field equipment, large clean surfaces and a few recessed panel seams. No hands, character, ammunition, background, floating pieces, text, logos or recognizable franchise features. Geometry only; neutral untextured model. Visual replacement only: preserve existing weapon balance, firing origin, collider and gameplay dimensions during later Unity fitting.",
+        "seed": 1476572168,
+        "started_at": 1794784764156,
+        "status": "SUCCEEDED",
+        "task_error": null,
+        "texture_prompt": "Original industrial sci-fi pulse rifle. Matte graphite receiver, desaturated steel barrel shroud, small ivory identification panels without text, subtle cyan emitter and energy-cell accents, restrained edge wear. Clear large material regions for distance readability; no baked lighting, logos or faction colors. Team markings will be applied in Unity.",
+        "type": "text-to-3d-refine"
+      },
+      "submission": {
+        "endpoint": "https://api.meshy.ai/openapi/v2/text-to-3d",
+        "provider": "Meshy",
+        "request": {
+          "enable_pbr": true,
+          "mode": "refine",
+          "preview_task_id": "01a1e181-2bca-751e-9815-3fb18f1e17fd",
+          "target_formats": [
+            "fbx"
+          ],
+          "texture_prompt": "Original industrial sci-fi pulse rifle. Matte graphite receiver, desaturated steel barrel shroud, small ivory identification panels without text, subtle cyan emitter and energy-cell accents, restrained edge wear. Clear large material regions for distance readability; no baked lighting, logos or faction colors. Team markings will be applied in Unity.",
+          "texture_resolution": "2k"
+        },
+        "request_sha256": "c93357bf33c2ee9dd4f737e6f805a0aebb45585a9593da3c646ba684a5b6285a",
+        "state": "submitted",
+        "submitted_at": "2026-11-15T23:19:21.566466+00:00",
+        "task_id": "01a1e182-185a-7182-8f86-e2a18314e377"
+      },
+      "files": [
+        {
+          "bytes": 12878908,
+          "path": "model.fbx",
+          "sha256": "916c0194d567b225a4a90f8a958a10cd3965a8773002dbaed50fabed754ca70b",
+          "source": "https://assets.meshy.ai/20a1f3a9-f341-4dfc-9878-e77bec63bf19/tasks/01a1e182-185a-7182-8f86-e2a18314e377/output/model.fbx"
+        },
+        {
+          "bytes": 53283,
+          "path": "thumbnail.png",
+          "sha256": "76adaec5a0d43521823d446e3879994c4b513809262f0beba33aeb904e0a236c",
+          "source": "https://assets.meshy.ai/20a1f3a9-f341-4dfc-9878-e77bec63bf19/tasks/01a1e182-185a-7182-8f86-e2a18314e377/output/preview.png"
+        },
+        {
+          "bytes": 5370225,
+          "path": "texture_0_base_color.png",
+          "sha256": "0a632a5fb4fc0f2cf8388d6887500251b25a854217fb49caf6d4ac0dd5770ea4",
+          "source": "https://assets.meshy.ai/20a1f3a9-f341-4dfc-9878-e77bec63bf19/tasks/01a1e182-185a-7182-8f86-e2a18314e377/output/texture_0.png"
+        },
+        {
+          "bytes": 580310,
+          "path": "texture_0_metallic.png",
+          "sha256": "2f040c874fbd84448a8f055d035605255bbb9eaff68d913cdeec884f829c0b0a",
+          "source": "https://assets.meshy.ai/20a1f3a9-f341-4dfc-9878-e77bec63bf19/tasks/01a1e182-185a-7182-8f86-e2a18314e377/output/texture_0_metallic.png"
+        },
+        {
+          "bytes": 1275790,
+          "path": "texture_0_roughness.png",
+          "sha256": "c271cb3e4eed97ed208196899df3cc814f71c20689a0e38ea540bcf4033a1cd8",
+          "source": "https://assets.meshy.ai/20a1f3a9-f341-4dfc-9878-e77bec63bf19/tasks/01a1e182-185a-7182-8f86-e2a18314e377/output/texture_0_roughness.png"
+        },
+        {
+          "bytes": 5321718,
+          "path": "texture_0_normal.png",
+          "sha256": "c90d9cc2d06d6517314d48321bd1856a8190af9aeef632802970da87776e478e",
+          "source": "https://assets.meshy.ai/20a1f3a9-f341-4dfc-9878-e77bec63bf19/tasks/01a1e182-185a-7182-8f86-e2a18314e377/output/texture_0_normal.png"
+        }
+      ]
+    }
+  ]
+}

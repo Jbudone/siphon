@@ -64,6 +64,28 @@ namespace Siphon
             motor.ResetTo(WarDirector.Instance.blueSpawn, Quaternion.identity); motor.enabled = false;
             yield return new WaitForEndOfFrame();
             WriteCapture(capturePath);
+            if (Array.IndexOf(Environment.GetCommandLineArgs(), "-siphon-capture-weapons") >= 0)
+            {
+                var visual = motor.view.GetComponentInChildren<WeaponPresentation>();
+                if (visual == null) Debug.LogError("Weapon smoke check: presentation missing.");
+                else
+                {
+                    var selection = typeof(PlayerCombat).GetProperty(nameof(PlayerCombat.Weapon));
+                    selection.SetValue(player, 1);
+                    yield return null; yield return new WaitForEndOfFrame();
+                    if (visual.pulse.activeSelf || !visual.disc.activeSelf) Debug.LogError("Weapon smoke check: disc selection failed.");
+                    WriteCapture(capturePath.Replace(".png", "-disc.png"));
+                    selection.SetValue(player, 0);
+                    yield return null; yield return new WaitForEndOfFrame();
+                    if (!visual.pulse.activeSelf || visual.disc.activeSelf) Debug.LogError("Weapon smoke check: rifle selection failed.");
+                    Vector3 rest = visual.transform.localPosition;
+                    player.Fire();
+                    if (Vector3.Distance(visual.transform.localPosition, rest) < 0.05f) Debug.LogError("Weapon smoke check: rifle recoil missing.");
+                    yield return new WaitForEndOfFrame();
+                    WriteCapture(capturePath.Replace(".png", "-fire.png"));
+                    Debug.Log("Weapon selection and rifle firing/recoil checks completed.");
+                }
+            }
             player.ToggleMenu(1);
             yield return null; yield return new WaitForEndOfFrame();
             WriteCapture(capturePath.Replace(".png", "-build.png"));

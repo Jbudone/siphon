@@ -1,0 +1,2 @@
+Assets/Siphon/Art/PulseRifle/*.fbx filter=lfs diff=lfs merge=lfs -text
+Assets/Siphon/Art/PulseRifle/*.png filter=lfs diff=lfs merge=lfs -text

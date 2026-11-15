@@ -1,44 +1,27 @@
-# W02 — Independent review and memory audit
+# A01 complete — first generated gun
 
-Status: Local setup verified; hosted activation blocked on destination and secret. User moved PR-Agent setup, separate review and mem0 assessment ahead of A01 on 2026-11-15.
+Completed 2026-11-15. User said to begin after W02 local setup. Root implemented after fresh worker spawn failed on platform thread limit; separate Sol/medium reviewer `independent_review` reviewed source, assets and follow-up fixes without edits, reporting no actionable findings. Reviewer was reused because a fresh worker could not be created; do not claim fresh-agent routing succeeded.
 
-Scope: verify and repair PR-Agent configuration, add a separate fresh reviewer role, assess mem0 against Git-backed Markdown. Root owns workflow/handoff and memory audit; fresh Sol/medium `review_setup` worker owns PR-Agent files and reviewer profile.
+## Outcome and evidence
 
-Local evidence: fresh Sol/medium implementation worker completed; TOML parsing, workflow YAML/config assertions, local Markdown links and Git whitespace checks passed. Upstream runner/config inspected and existing model confirmed in live OpenRouter catalog. Independent fresh Sol/medium reviewer `independent_review` found no actionable correctness findings and independently verified upstream event/config handling and the mem0 migration claims. No hosted review or engine validation is claimed.
+One 7553-triangle, 0.8m rifle with 2K URP material maps and reusable prefab under `Assets/Siphon/Art/PulseRifle`. AssaultSceneBuilder preserves the prefab through regeneration. WeaponPresentation selects rifle or previous disc placeholder; PlayerCombat and movement tuning unchanged. Visual muzzle aligned to the tip ring at (0,.065,.4); gameplay firing origin unchanged. Binary art uses Git LFS.
 
-Hosted activation needs a GitHub destination: checkout has no remote, GitHub auth works as Jbudone, no matching Siphon repository was found under that account. Destination question is pending. Do not claim a live review until an actual Actions run and review are observed. A01 remains the next gameplay slice.
+Meshy preview `01a1e181-2bca-751e-9815-3fb18f1e17fd`, refine `01a1e182-185a-7182-8f86-e2a18314e377`. Both SUCCEEDED/downloaded/inspected. Balance 1900 → 1880 → 1870; no jobs in flight. Journals remain under ignored `artifacts/meshy/requests/`. [Asset record](../assets/PULSE-RIFLE.md), [generation provenance](../assets/pulse-rifle-provenance.json), [tested build input hashes](../assets/pulse-rifle-build.json).
 
-The deferred A01 task packet is below. W01 is complete; its summary preserves setup evidence.
+Exact engine commands (all explicit Siphon project path):
 
-## Completed: W01 — Establish the development workflow
+- `/home/jbud/Unity/Hub/Editor/6000.6.0f1/Editor/Unity -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.RifleAssetBuilder.BuildCandidate -quit -logFile /tmp/siphon-rifle-candidate-final.log`: exit 0; compile, prefab persistence, .8m bounds, no colliders, URP and forward muzzle checks passed; Linux candidate built.
+- `xvfb-run -a -s '-screen 0 1280x720x24' Builds/SiphonCandidate/Siphon.x86_64 -siphon-smoke -siphon-soak 25 -siphon-capture-weapons -siphon-capture /home/jbud/jdrive/jstuff/work/personal/siphon/artifacts/a01/rifle-final.png -screen-width 1280 -screen-height 720 -screen-fullscreen 0 -logFile /tmp/siphon-rifle-smoke-final.log`: exit 0; visual switching, rifle firing/recoil and smoke passed; 19 bots, 4 deliveries, 155 navigation searches/0 failures. Software-rendered run is not performance evidence.
+- `/home/jbud/Unity/Hub/Editor/6000.6.0f1/Editor/Unity -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.StalkerValidation.Run -logFile /tmp/siphon-rifle-stalker-target.log`: exit 0; sound snapshots, occlusion, warnings, 4 pounces/4 bites and legacy save passed.
 
-Outcome: a fresh agent can resume cheaply, select one task, verify it, and report clearly; the user has a clear roadmap and minimal feedback queue.
+Initial actual-build QA caught reversed imported orientation (corrected -90° Y) and a pre-existing Stalker native allocation exception (moved MaterialPropertyBlock construction to Awake). Existing Stalker validator also left its player collider disabled; restored after teleport so visibility raycasts work and added diagnostic assertion values. Independent reviewer inspected both fixes. First smoke and two earlier Stalker runs failed; final results above supersede them, not conceal them.
 
-Scope: workflow/roadmap documentation, Git setup, agent profiles, local telemetry helpers, and a resumable Meshy helper. No gameplay or movement changes.
+Actual build screenshots in `docs/images/pulse-rifle*.png` and [briefing](../briefings/2026-11-15-rifle.md). No human test requested. Existing Builds/Siphon remains untouched; candidate is Builds/SiphonCandidate. No Yendor mutation. Unity login/Cloud check passed this session.
 
-Acceptance:
+## Next bounded slice
 
-- All requested immediate priorities appear in ROADMAP with honest status and a first slice.
-- Git captures existing prototype separately from new workflow changes; generated caches/builds and secrets stay ignored.
-- Fresh-session packet, worker model policy, release briefing format, and human-feedback admission rules exist.
-- Workflow helper works; CodeBurn snapshot is project-scoped. No savings are invented.
-- Meshy helper verifies offline behavior; no live generation is claimed without a real job and output.
-- Unity and Meshy access blockers are recorded with exact next steps.
+M01: plan/measure the provisional 2km × 2km terrain and base spacing before broad map replacement. Start `git status --short`, read ROADMAP M01 and CONTEXT, then inspect only terrain-generation and navigation boundary methods in AssaultSceneBuilder, WarDirector and BotLocomotion. Preserve accepted movement and weapons. Existing hard-coded 295m recovery bounds need inspection before expansion. Supply a fresh worker if thread capacity allows, then a separate reviewer.
 
-Worker slice: `asset_pipeline`, gpt-6.1-sol / medium, fresh context. Reason: bounded API integration with durable paid-job handling needs normal implementation reasoning. Owns `tools/meshy.py`, its offline checks, and `docs/assets/requests/` only. Root owns integration and docs.
+G01 follow-ups remain hands/equip/fire animation, world gun and disc model. Do not generate another rifle just to recreate this accepted sample. Style/pseudo markings remain provisional.
 
-Evidence: `python3 -B -m unittest discover -s tools -p 'test_meshy.py' -v` passed all seven checks. Preview dry-run made zero network calls. Workflow help/status/handoff/snapshot commands passed; CodeBurn exported only Siphon; TOML parsed; local Markdown links resolved; Git whitespace check passed. Profiles were written and project config loaded without error by the CLI; automatic scheduling/session resets were not implemented. No gameplay or engine validation was needed or claimed. Find the workflow commit with `git log -1 --oneline`.
-
-## Deferred packet: A01 — First generated gun
-
-Status: Meshy credentials work through direnv (1900 credits observed). Unity AI access is verified with 884/1000 credits available. These services work independently.
-
-Read: AGENTS.md, docs/assets/PIPELINE.md, current request JSON, PlayerCombat.cs, AssaultSceneBuilder.cs, PlaygroundBuilder.cs. Inspect only relevant builder methods before editing.
-
-Outcome: one pulse-rifle model in a repeatable import/prefab path, visible in the actual game, with reviewed materials and recorded generation provenance. Use existing API credits; start one preview, inspect, refine the accepted geometry, then download promptly. Avoid whole-character or weapon-set generation until one import works.
-
-Acceptance: correct scale/pivot/muzzle, no changed damage/cadence, URP materials, scene regeneration preserves references, no compile errors, actual build screenshot, job IDs/credit observations and source revision in briefing. Record any style assumption as provisional.
-
-If blocked: report exact missing access and preserve request/job state. Do useful independent roadmap work; do not repeatedly resubmit or repeatedly ask the user for the same credential.
-
-Next command: `direnv exec . python3 tools/meshy.py submit docs/assets/requests/pulse-rifle-preview.json`. Balance was checked successfully; recheck if needed. If the journal already has a job, resume it by ID. Unity AI account setup can proceed independently; a Meshy rifle does not require Unity AI to generate.
+W02 hosted activation remains pending a GitHub destination and OPENROUTER_API_KEY Actions secret; local independent review works. mem0 deferred per [audit](MEMORY-AUDIT.md). No repository has been created/pushed and no secret uploaded.

@@ -45,7 +45,8 @@ namespace Siphon.Editor
                 warning |= stalker.State == "Pounce warning";
                 peak = Mathf.Max(peak, stalker.transform.position.y - WarDirector.GroundPoint(stalker.transform.position).y);
                 if (Time.time < 14) return;
-                Require(warning && stalker.Pounces > 0 && stalker.Bites > 0 && player.Entity.health < 10000, "Visible encounter warns, lunges and delivers melee damage");
+                Require(warning && stalker.Pounces > 0 && stalker.Bites > 0 && player.Entity.health < 10000,
+                    $"Visible encounter warns, lunges and delivers melee damage (warning={warning}, pounces={stalker.Pounces}, bites={stalker.Bites}, health={player.Entity.health}, peak={peak:0.00}m)");
                 Require(peak > 0.45f, "Grounded external impulse actually lifts the creature");
                 Require(!stalker.GetComponent<BotLocomotion>().Boosting && !failed, "Stalkers never jet and encounter has no engine errors");
                 var snapshot = FieldSaveSystem.Capture();
@@ -63,6 +64,8 @@ namespace Siphon.Editor
             player.GetComponent<PlaygroundPlayer>().enabled = false; player.GetComponent<CharacterController>().enabled = false;
             noise = WarDirector.GroundPoint(new Vector3(-240, 0, -230)) + Vector3.up * 0.1f;
             player.transform.position = noise + Vector3.right * 2; player.Entity.maximumHealth = player.Entity.health = 10000;
+            // Keep the stationary target visible to Combatant.CanSee's collider raycast.
+            player.GetComponent<CharacterController>().enabled = true;
             Vector3 origin = WarDirector.GroundPoint(noise + Vector3.forward * 15);
             wall = GameObject.CreatePrimitive(PrimitiveType.Cube); wall.name = "Forest sight blocker";
             wall.transform.position = WarDirector.GroundPoint(noise + Vector3.forward * 7) + Vector3.up * 2;

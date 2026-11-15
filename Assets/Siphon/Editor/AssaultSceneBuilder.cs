@@ -109,10 +109,20 @@ namespace Siphon.Editor
             camera.tag = "MainCamera";
             camera.fieldOfView = 100; camera.farClipPlane = 900; camera.nearClipPlane = 0.08f;
             camera.gameObject.AddComponent<AudioListener>();
+            var rifle = AssetDatabase.LoadAssetAtPath<GameObject>(RifleAssetBuilder.PrefabPath);
+            if (rifle != null)
+            {
+                var weapon = (GameObject)PrefabUtility.InstantiatePrefab(rifle, camera.transform);
+                weapon.name = "First person weapon";
+                weapon.transform.localPosition = new Vector3(0.28f, -0.24f, 0.48f);
+            }
+            else
+            {
             WarDirector.Part(camera.transform, PrimitiveType.Cube, "First person weapon",
                 new Vector3(0.28f, -0.24f, 0.48f), new Vector3(0.13f, 0.14f, 0.5f), dark, false);
             WarDirector.Part(camera.transform, PrimitiveType.Cube, "Weapon accent",
                 new Vector3(0.28f, -0.15f, 0.5f), new Vector3(0.08f, 0.025f, 0.35f), blue, false);
+            }
             var motor = player.AddComponent<PlaygroundPlayer>();
             motor.tuning = AssetDatabase.LoadAssetAtPath<MovementTuning>("Assets/Siphon/Settings/Movement.asset");
             motor.view = camera;
