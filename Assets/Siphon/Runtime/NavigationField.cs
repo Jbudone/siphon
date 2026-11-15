@@ -4,9 +4,9 @@ namespace Siphon
 {
     public sealed class NavigationField : ScriptableObject
     {
-        public Vector2 origin = new Vector2(-300, -300);
-        public float cellSize = 4;
-        public int width = 151;
+        public Vector2 origin = AssaultLayout.Default.Minimum;
+        public float cellSize = AssaultLayout.Default.NavigationSpacing;
+        public int width = AssaultLayout.Default.NavigationWidth;
         public float[] heights;
         public bool[] walkable;
         public int Count => width * width;

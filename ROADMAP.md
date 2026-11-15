@@ -2,7 +2,7 @@
 
 Updated: 2026-11-15. This is the authoritative priority list. No delivery dates are committed.
 
-[Latest briefing](docs/briefings/2026-11-15-rifle.md) · [Human feedback](docs/HUMAN-FEEDBACK.md) · [Agent handoff](docs/agent/STATE.md) · [Workflow](docs/WORKFLOW.md)
+[Latest briefing](docs/briefings/2026-11-15-layout.md) · [Human feedback](docs/HUMAN-FEEDBACK.md) · [Agent handoff](docs/agent/STATE.md) · [Workflow](docs/WORKFLOW.md)
 
 ## Immediate follow-up
 
@@ -13,7 +13,7 @@ Work in small playable slices. Finish and verify one slice before assigning the 
 | W01 | First | Done | Git, compact agent notes, model routing, briefings, CodeBurn and advisory PR-Agent configuration. Keep the process lightweight; manual task metrics are optional. Seven offline Meshy checks pass; workflow commands, project-scoped export, TOML and documentation links verified. See [briefing](docs/briefings/2026-11-15.md). |
 | W02 | Next | Local setup verified; hosted activation blocked | Verify PR-Agent configuration and activate on a selected GitHub repository; separate fresh reviewer from orchestrator/implementer. Assess mem0; recommendation is to retain Git-backed Markdown for now. See [audit](docs/agent/MEMORY-AUDIT.md). |
 | A01 | First asset | Done | Pulse-rifle model, URP material and persistent prefab in Linux candidate; build/integration checks, 25s smoke, weapon switching/firing and Stalker validation pass. Meshy preview/refine cost 30 credits; [briefing](docs/briefings/2026-11-15-rifle.md) and [provenance](docs/assets/PULSE-RIFLE.md). |
-| M01 | Immediate | Planned | A large outdoor map at Starsiege Tribes scale: broad skiing terrain, long sightlines, separated bases, and useful forward outposts. Start with a **provisional 2 km × 2 km playable area**, roughly 1 km between bases. Measure route times and performance before settling dimensions. Keep the movement lab. |
+| M01 | Immediate | In progress: 600m layout foundation verified | A large outdoor map at Starsiege Tribes scale: broad skiing terrain, long sightlines, separated bases, and useful forward outposts. Start with a **provisional 2 km × 2 km playable area**, roughly 1 km between bases. Measure route times and performance before settling dimensions. Keep the movement lab. [Dependency audit and calculated budgets](docs/maps/M01-PLAN.md); shared 600m layout implemented; generation/runtime edge checks, FieldValidation, candidate build and 25s smoke passed. [Briefing](docs/briefings/2026-11-15-layout.md). Next: opt-in expansion with isolated assets/saves. |
 | G01 | Immediate | Planned | Actual first-person and world gun models for pulse rifle and disc launcher, with hold/fire/equip animation and muzzle alignment. Preserve accepted damage, cadence, and movement. Ship one complete gun first. |
 | C01 | Immediate | Planned | Actual character and structure models, materials, and animation. First slice: one team-readable soldier with idle, run, jump/jet, fire, and death states. Then replace remaining placeholders in small sets. |
 | S01 | Immediate | Planned | Authored/generated spatial weapon, impact, jet, grapple, movement, and alert sounds, using Unity AI where supported. First slice: pulse rifle and its impacts; compare in game at normal volume. |

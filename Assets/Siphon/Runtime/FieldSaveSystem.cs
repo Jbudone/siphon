@@ -237,7 +237,7 @@ namespace Siphon
             player.Gear.thermalLining = snapshot.thermal; player.Gear.surveyOptics = snapshot.optics; player.Gear.fieldEngineering = snapshot.engineering;
             player.Entity.health = snapshot.playerHealth > 0 ? Mathf.Clamp(snapshot.playerHealth, 1, player.Entity.maximumHealth) : player.Entity.maximumHealth;
             Vector3 position = snapshot.playerHealth > 0 ? snapshot.playerPosition : war.RespawnPoint(Team.Blue, true);
-            if (Mathf.Abs(position.x) > 290 || Mathf.Abs(position.z) > 290 || float.IsNaN(position.y)) position = war.blueSpawn;
+            if (AssaultLayout.Default.Outside(position, AssaultLayout.Default.SaveInset) || float.IsNaN(position.y)) position = war.blueSpawn;
             position.y = Mathf.Max(position.y, WarDirector.GroundPoint(position).y + 0.2f);
             player.GetComponent<PlaygroundPlayer>().ResetTo(position, Quaternion.identity);
             if (snapshot.bots != null)

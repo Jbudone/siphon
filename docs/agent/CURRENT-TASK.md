@@ -1,27 +1,34 @@
-# A01 complete — first generated gun
+# M01 — 600m layout foundation complete; expansion next
 
-Completed 2026-11-15. User said to begin after W02 local setup. Root implemented after fresh worker spawn failed on platform thread limit; separate Sol/medium reviewer `independent_review` reviewed source, assets and follow-up fixes without edits, reporting no actionable findings. Reviewer was reused because a fresh worker could not be created; do not claim fresh-agent routing succeeded.
+Completed slice 2026-11-15. Fresh Sol/medium `terrain_audit` wrote [dependency plan](../maps/M01-PLAN.md); fresh Sol/medium `layout_contract` implemented bounded code; fresh separate Sol/medium `layout_review` found no actionable correctness findings. Root integrated and ran sequential engine checks. No paid jobs.
 
-## Outcome and evidence
+## Outcome
 
-One 7553-triangle, 0.8m rifle with 2K URP material maps and reusable prefab under `Assets/Siphon/Art/PulseRifle`. AssaultSceneBuilder preserves the prefab through regeneration. WeaponPresentation selects rifle or previous disc placeholder; PlayerCombat and movement tuning unchanged. Visual muzzle aligned to the tip ring at (0,.065,.4); gameplay firing origin unchanged. Binary art uses Git LFS.
+New immutable runtime AssaultLayout.Default owns existing 600m extent,5m recovery/target inset,10m save inset, terrain/nav density, base/spawn/camp anchors and HUD projection. Builder/baker, navigation defaults, bot recovery/restore, target validation, HUD and player-save restore use it. No map enlargement, save-schema, movement tuning or weapon balance changes. Movement lab remains untouched; full movement validator not rerun. See [briefing](../briefings/2026-11-15-layout.md) and [tested build inputs/outputs](../maps/M01-BUILD.json).
 
-Meshy preview `01a1e181-2bca-751e-9815-3fb18f1e17fd`, refine `01a1e182-185a-7182-8f86-e2a18314e377`. Both SUCCEEDED/downloaded/inspected. Balance 1900 → 1880 → 1870; no jobs in flight. Journals remain under ignored `artifacts/meshy/requests/`. [Asset record](../assets/PULSE-RIFLE.md), [generation provenance](../assets/pulse-rifle-provenance.json), [tested build input hashes](../assets/pulse-rifle-build.json).
+GitHub-facing UPDATES.md links all briefings and actual-build screenshots, with README entry point and dated archive. Relative image links and regular Git storage preserve GitHub rendering. GitHub Markdown API rendered the table, expandable gallery and 3images successfully. No Pages hosting or downloadable release is implied.
 
-Exact engine commands (all explicit Siphon project path):
+## Exact engine checks
 
-- `/home/jbud/Unity/Hub/Editor/6000.6.0f1/Editor/Unity -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.RifleAssetBuilder.BuildCandidate -quit -logFile /tmp/siphon-rifle-candidate-final.log`: exit 0; compile, prefab persistence, .8m bounds, no colliders, URP and forward muzzle checks passed; Linux candidate built.
-- `xvfb-run -a -s '-screen 0 1280x720x24' Builds/SiphonCandidate/Siphon.x86_64 -siphon-smoke -siphon-soak 25 -siphon-capture-weapons -siphon-capture /home/jbud/jdrive/jstuff/work/personal/siphon/artifacts/a01/rifle-final.png -screen-width 1280 -screen-height 720 -screen-fullscreen 0 -logFile /tmp/siphon-rifle-smoke-final.log`: exit 0; visual switching, rifle firing/recoil and smoke passed; 19 bots, 4 deliveries, 155 navigation searches/0 failures. Software-rendered run is not performance evidence.
-- `/home/jbud/Unity/Hub/Editor/6000.6.0f1/Editor/Unity -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.StalkerValidation.Run -logFile /tmp/siphon-rifle-stalker-target.log`: exit 0; sound snapshots, occlusion, warnings, 4 pounces/4 bites and legacy save passed.
+Working directory `/home/jbud/jdrive/jstuff/work/personal/siphon`; explicit Siphon project path used. Run sequentially:
 
-Initial actual-build QA caught reversed imported orientation (corrected -90° Y) and a pre-existing Stalker native allocation exception (moved MaterialPropertyBlock construction to Awake). Existing Stalker validator also left its player collider disabled; restored after teleport so visibility raycasts work and added diagnostic assertion values. Independent reviewer inspected both fixes. First smoke and two earlier Stalker runs failed; final results above supersede them, not conceal them.
+```sh
+UNITY=/home/jbud/Unity/Hub/Editor/6000.6.0f1/Editor/Unity
+"$UNITY" -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.LayoutValidation.RebuildAndCheck -quit -logFile /tmp/siphon-layout-generation.log
+"$UNITY" -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.LayoutValidation.Run -logFile /tmp/siphon-layout-runtime.log
+"$UNITY" -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.FieldValidation.Run -logFile /tmp/siphon-layout-field-validation.log
+"$UNITY" -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.PrototypeArtifacts.BuildLinuxCandidate -quit -logFile /tmp/siphon-layout-candidate-build.log
+xvfb-run -a -s '-screen 0 1280x720x24' Builds/SiphonCandidate/Siphon.x86_64 -siphon-smoke -siphon-soak 25 -siphon-capture-weapons -siphon-capture /home/jbud/jdrive/jstuff/work/personal/siphon/artifacts/m01/layout-baseline.png -screen-width 1280 -screen-height 720 -screen-fullscreen 0 -logFile /tmp/siphon-layout-smoke.log
+```
 
-Actual build screenshots in `docs/images/pulse-rifle*.png` and [briefing](../briefings/2026-11-15-rifle.md). No human test requested. Existing Builds/Siphon remains untouched; candidate is Builds/SiphonCandidate. No Yendor mutation. Unity login/Cloud check passed this session.
+All five exited 0. Generation: original terrain topology/extent, nav coverage, anchors, rifle prefab/reload and HUD projection passed. Runtime: inclusive target/bot295m and player-save290m edges, plus just beyond, on all four axes passed. Field: navigation, legacy version 1 readability/atomic recovery, save roundtrip, economy, shields, sensors, respawn, bot movement and victory passed. Candidate smoke:25s, 19 bots, 4 deliveries, 145 navigation searches / 0 failures, weapon switching/firing/recoil passed. Actual screenshot inspected and committed as `docs/images/layout-baseline.png`. Software-rendered startup worst frame 2527ms is not a performance benchmark. Existing Builds/Siphon not replaced.
 
 ## Next bounded slice
 
-M01: plan/measure the provisional 2km × 2km terrain and base spacing before broad map replacement. Start `git status --short`, read ROADMAP M01 and CONTEXT, then inspect only terrain-generation and navigation boundary methods in AssaultSceneBuilder, WarDirector and BotLocomotion. Preserve accepted movement and weapons. Existing hard-coded 295m recovery bounds need inspection before expansion. Supply a fresh worker if thread capacity allows, then a separate reviewer.
+M01 expansion: opt-in large candidate with separate scene, mesh/navigation paths and save/layout identity before relocating bases/content. Read plan and only AssaultLayout, scene builder, NavigationBaker, WarDirector, FieldSaveSystem and bot objective/respawn selection as required. Provisional 2km × 2km and 1km base spacing require measured traversal, seam/recovery/reachability checks and named-hardware timing; no such large-map result exists yet. Preserve 600m baseline and movement lab. Exact first command: `git status --short`.
 
-G01 follow-ups remain hands/equip/fire animation, world gun and disc model. Do not generate another rifle just to recreate this accepted sample. Style/pseudo markings remain provisional.
+## Access and publication
 
-W02 hosted activation remains pending a GitHub destination and OPENROUTER_API_KEY Actions secret; local independent review works. mem0 deferred per [audit](MEMORY-AUDIT.md). No repository has been created/pushed and no secret uploaded.
+Initial auth check failed because CLI unexpectedly reported beta.8 and printed help instead of Cloud JSON. `unity self-update --channel stable --yes --json --non-interactive` restored 1.0.0; repeated `python 3 tools/unity_auth.py` passed. No expired-login diagnosis or user action needed. No Yendor editor mutation.
+
+GitHub destination question remains pending. No remote configured and no matching Siphon repo found under Jbudone. User authorized push but did not supply destination; do not create/push to a guessed repo. PR-Agent hosted execution also needs its Actions secret. No repo created, push, secret upload or hosted execution is claimed. `.vscode/` remains pre-existing/untracked/untouched.

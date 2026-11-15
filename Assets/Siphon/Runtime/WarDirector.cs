@@ -294,7 +294,7 @@ namespace Siphon
         public void RestoreOutcome(bool finished, Team winner) { Finished = finished; Winner = winner; }
         public bool MarkTarget(Vector3 point, Combatant seen = null)
         {
-            if (Finished || !Finite(point) || Mathf.Abs(point.x) > 295 || Mathf.Abs(point.z) > 295) return false;
+            if (Finished || !Finite(point) || AssaultLayout.Default.Outside(point, AssaultLayout.Default.RecoveryInset)) return false;
             RallyPoint = point; RallyUntil = Time.time + 45;
             rallyEnemyCore = seen != null && seen.team == Team.Red && seen.kind == EntityKind.Core;
             RallyLabel = seen != null ? ActorName(seen) : "FIELD POSITION";

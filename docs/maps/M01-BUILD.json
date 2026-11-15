@@ -1,0 +1,33 @@
+{
+  "source_base_revision": "1cc509d",
+  "source_scope": "base plus this layout slice; hashes identify tested source and named generated inputs",
+  "unity": "6000.6.0f1",
+  "build_method": "Siphon.Editor.PrototypeArtifacts.BuildLinuxCandidate",
+  "candidate_path": "Builds/SiphonCandidate/Siphon.x86_64",
+  "sha256": {
+    "Assets/Siphon/Runtime/AssaultLayout.cs": "d170251800a6442516f535f6dd372a58f18266cbc57e97034dacd233e9e33a38",
+    "Assets/Siphon/Runtime/BotBrain.cs": "a21980053de4834e300859dbd1e832080060ac340ecabaecd5ac00d4fb3cedba",
+    "Assets/Siphon/Runtime/BotLocomotion.cs": "ce69c1991b5e2f83c53bae08f743046722cc5e612a2318edc56cf5f80e4754ff",
+    "Assets/Siphon/Runtime/FieldHud.cs": "43281ec8387ea1072d17e49ad60baea87387bf6c4da9e91d2f342c652f4acbb6",
+    "Assets/Siphon/Runtime/FieldSaveSystem.cs": "4989b63f74d82b69dbfcd0cfcc5a4491f8996906629975a730a34d002d6e368c",
+    "Assets/Siphon/Runtime/NavigationField.cs": "64f3a0c6f1cbe6d4ce530676ca286277e3fabc294a7045564278a2f73d64a089",
+    "Assets/Siphon/Runtime/WarDirector.cs": "eca9985040daac1f73ad3c7f41715a70704123c544f6f29f052c610751500b49",
+    "Assets/Siphon/Runtime/PlayerCombat.cs": "bfbabf6d166878808d3f1e2c510dc2dce2b0fd8c518e41f4c0d7e8e30f047180",
+    "Assets/Siphon/Runtime/PlaygroundPlayer.cs": "a937d30d90facdecd00b467e50cc49b207a0a9017bc2b3862d34af4244179f50",
+    "Assets/Siphon/Editor/LayoutValidation.cs": "b994175dac554f8d42b04186c891872fcce6cd4af6d17679c4a2db6761eb0cdc",
+    "Assets/Siphon/Editor/AssaultSceneBuilder.cs": "02c09fe9d2ca8a733faa9582e86f1698fa784db6e3fe7402b94ff73fbb196e21",
+    "Assets/Siphon/Editor/NavigationBaker.cs": "1ac642cd2866d7ea6e2e2e22686c8f9de1bee958d3ce0425d445b0a967b44d62",
+    "Assets/Siphon/Editor/PrototypeArtifacts.cs": "0ae21016abe8bd045988cdc9f7f16c6531a8f1c16e67b7296c5413e8346b0258",
+    "Assets/Siphon/Scenes/AssaultPlayground.unity": "6b5d2c97de68683a4bd18b0c27bfcc64f363cca165ee7571b2514021fce53169",
+    "Assets/Siphon/Meshes/Field.asset": "32c6dbb3383c2ba6462a0bd5effcfdb2ee38c54f32ad473b510626486fdcaf8c",
+    "Assets/Siphon/Settings/FieldNavigation.asset": "37f91514e69376e0de3ac5b951a0cac0f09bdd9afbf358236ed715fc17c15f68",
+    "Assets/Siphon/Settings/Movement.asset": "7d6b83e20c28795500b592dcb3463d55742d665f9ff4bf0f5474c82579567d70",
+    "Assets/Siphon/Art/PulseRifle/PulseRifle.prefab": "dad7b586f11aecfcbd44813dc0fbca8bf17c78ad8fda8f377762ecef179dd62e"
+  },
+  "built_outputs_sha256": {
+    "Builds/SiphonCandidate/Siphon.x86_64": "de3009bc2c3a8a7c25f347c0c0a098a1c49dbbb6ee6ec100562e61fb50cae261",
+    "Builds/SiphonCandidate/Siphon_Data/Managed/Assembly-CSharp.dll": "ba16d56bbfe684958685474030018629f48e7f38bc4075fb4f31651b3972f416",
+    "Builds/SiphonCandidate/Siphon_Data/level0": "04ac74e9f6e7a9755eb980fe3452edb94a33f93806b3be2ed26b7c87355b21a4"
+  },
+  "limits": "Selected input/output hashes, not a full build-directory manifest; no performance claim."
+}

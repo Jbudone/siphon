@@ -11,7 +11,8 @@ namespace Siphon.Editor
             var field = AssetDatabase.LoadAssetAtPath<NavigationField>(path);
             bool fresh = field == null;
             if (fresh) field = ScriptableObject.CreateInstance<NavigationField>();
-            field.width = 151; field.cellSize = 4; field.origin = new Vector2(-300, -300);
+            var layout = AssaultLayout.Default;
+            field.width = layout.NavigationWidth; field.cellSize = layout.NavigationSpacing; field.origin = layout.Minimum;
             field.heights = new float[field.Count]; field.walkable = new bool[field.Count];
             Physics.SyncTransforms();
             var overlaps = new Collider[24];

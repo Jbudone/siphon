@@ -28,10 +28,10 @@ namespace Siphon.Editor
             war.gameObject.AddComponent<StandaloneSmokeCheck>();
             war.gameObject.AddComponent<FieldSaveSystem>();
             war.blueMaterial = blue; war.redMaterial = red; war.darkMaterial = dark; war.wildMaterial = rare;
-            war.blueSpawn = Point(-7, -178) + Vector3.up;
-            war.redSpawn = Point(7, 175) + Vector3.up;
-            BuildBase(war, Team.Blue, -185, blue, dark);
-            BuildBase(war, Team.Red, 185, red, dark);
+            war.blueSpawn = Point(AssaultLayout.Default.BlueSpawn) + Vector3.up;
+            war.redSpawn = Point(AssaultLayout.Default.RedSpawn) + Vector3.up;
+            BuildBase(war, Team.Blue, AssaultLayout.Default.BlueBase, blue, dark);
+            BuildBase(war, Team.Red, AssaultLayout.Default.RedBase, red, dark);
             for (int i = 0; i < 5; i++)
             {
                 float z = -70 + i * 35;
@@ -92,8 +92,8 @@ namespace Siphon.Editor
                 rock.transform.rotation = Quaternion.Euler(0, i * 27, 15);
                 rock.GetComponent<Renderer>().sharedMaterial = snow;
             }
-            BuildCamp("Frost vault", Point(228, 92), snow, rare, dark, true);
-            BuildCamp("Forest relay ruins", Point(-225, -20), wood, rare, dark, false);
+            BuildCamp("Frost vault", Point(AssaultLayout.Default.FrostCamp), snow, rare, dark, true);
+            BuildCamp("Forest relay ruins", Point(AssaultLayout.Default.ForestCamp), wood, rare, dark, false);
             var player = new GameObject("Player");
             player.layer = 8;
             player.transform.position = war.blueSpawn;
@@ -183,32 +183,34 @@ namespace Siphon.Editor
             }
             var brain = warden.AddComponent<WardenBrain>(); brain.home = center;
         }
-        private static void BuildBase(WarDirector war, Team team, float z, Material color, Material dark)
+        private static void BuildBase(WarDirector war, Team team, Vector2 anchor, Material color, Material dark)
         {
+            float x = anchor.x, z = anchor.y;
             float heading = team == Team.Blue ? 0 : 180;
-            var core = war.CreateStructure(EntityKind.Core, team, Point(0, z), heading, false).GetComponent<Combatant>();
+            var core = war.CreateStructure(EntityKind.Core, team, Point(x, z), heading, false).GetComponent<Combatant>();
             if (team == Team.Blue) war.blueCore = core; else war.redCore = core;
-            war.CreateStructure(EntityKind.Generator, team, Point(12, z), heading, false);
-            war.CreateStructure(EntityKind.Processor, team, Point(-10, z + (team == Team.Blue ? -5 : 5)), heading, false);
+            war.CreateStructure(EntityKind.Generator, team, Point(x + 12, z), heading, false);
+            war.CreateStructure(EntityKind.Processor, team, Point(x - 10, z + (team == Team.Blue ? -5 : 5)), heading, false);
             float front = z + (team == Team.Blue ? 20 : -20);
-            war.CreateStructure(EntityKind.Turret, team, Point(-12, front), heading, false);
-            war.CreateStructure(EntityKind.Turret, team, Point(12, front), heading, false);
-            war.CreateStructure(EntityKind.ForceField, team, Point(0, front + (team == Team.Blue ? 4 : -4)), heading, false);
-            war.CreateStructure(EntityKind.Radar, team, Point(-14, z + (team == Team.Blue ? 5 : -5)), heading, false);
-            war.CreateStructure(EntityKind.Trap, team, Point(18, z + (team == Team.Blue ? 28 : -28)), heading, false);
-            Box(team + " rear bunker", Point(0, z + (team == Team.Blue ? -12 : 12)) + Vector3.up * 3,
+            war.CreateStructure(EntityKind.Turret, team, Point(x - 12, front), heading, false);
+            war.CreateStructure(EntityKind.Turret, team, Point(x + 12, front), heading, false);
+            war.CreateStructure(EntityKind.ForceField, team, Point(x, front + (team == Team.Blue ? 4 : -4)), heading, false);
+            war.CreateStructure(EntityKind.Radar, team, Point(x - 14, z + (team == Team.Blue ? 5 : -5)), heading, false);
+            war.CreateStructure(EntityKind.Trap, team, Point(x + 18, z + (team == Team.Blue ? 28 : -28)), heading, false);
+            Box(team + " rear bunker", Point(x, z + (team == Team.Blue ? -12 : 12)) + Vector3.up * 3,
                 new Vector3(28, 6, 3), dark);
-            Box(team + " west wall", Point(-20, z) + Vector3.up * 2.5f, new Vector3(3, 5, 24), dark);
-            Mark(team + " base deck", Point(0, z) + Vector3.up * 0.04f, new Vector3(38, 0.05f, 32), dark);
-            Mark(team + " front stripe", Point(0, z + (team == Team.Blue ? 16 : -16)) + Vector3.up * 0.08f,
+            Box(team + " west wall", Point(x - 20, z) + Vector3.up * 2.5f, new Vector3(3, 5, 24), dark);
+            Mark(team + " base deck", Point(x, z) + Vector3.up * 0.04f, new Vector3(38, 0.05f, 32), dark);
+            Mark(team + " front stripe", Point(x, z + (team == Team.Blue ? 16 : -16)) + Vector3.up * 0.08f,
                 new Vector3(38, 0.05f, 0.5f), color);
-            Mark(team + " side stripe", Point(19, z) + Vector3.up * 0.08f, new Vector3(0.5f, 0.05f, 32), color);
+            Mark(team + " side stripe", Point(x + 19, z) + Vector3.up * 0.08f, new Vector3(0.5f, 0.05f, 32), color);
         }
         private static void Mark(string name, Vector3 position, Vector3 scale, Material material)
         {
             Box(name, position, scale, material);
             Object.DestroyImmediate(GameObject.Find(name).GetComponent<Collider>());
         }
+        private static Vector3 Point(Vector2 anchor) => Point(anchor.x, anchor.y);
         private static Vector3 Point(float x, float z) => new Vector3(x, Height(x, z), z);
         public static float Height(float x, float z)
         {
@@ -221,8 +223,8 @@ namespace Siphon.Editor
         }
         private static void MakeTerrain(Material[] materials)
         {
-            const int cells = 100;
-            const float size = 600;
+            int cells = AssaultLayout.Default.TerrainCells;
+            float size = AssaultLayout.Default.Size;
             var vertices = new Vector3[(cells + 1) * (cells + 1)];
             var uv = new Vector2[vertices.Length];
             var triangles = new System.Collections.Generic.List<int>[]

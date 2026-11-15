@@ -99,7 +99,7 @@ namespace Siphon
                 Vector3 pack = transform.position + Vector3.up - transform.forward * 0.45f;
                 exhaust.SetPosition(0, pack); exhaust.SetPosition(1, pack - Vector3.up * 1.2f);
             }
-            if (transform.position.y < -40 || Mathf.Abs(transform.position.x) > 295 || Mathf.Abs(transform.position.z) > 295)
+            if (transform.position.y < -40 || AssaultLayout.Default.Outside(transform.position, AssaultLayout.Default.RecoveryInset))
             {
                 var brain = GetComponent<BotBrain>(); body.enabled = false;
                 transform.position = WarDirector.GroundPoint(brain.home) + Vector3.up * 0.1f;

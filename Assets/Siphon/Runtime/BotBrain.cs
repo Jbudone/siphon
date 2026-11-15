@@ -54,7 +54,7 @@ namespace Siphon
             bool revived = !Entity.Alive && offlineSeconds >= saved.reviveSeconds;
             if (revived) Entity.Restore();
             Vector3 point = revived ? (Entity.team == Team.Wild ? home : WarDirector.Instance.RespawnPoint(Entity.team)) : saved.position;
-            if (!Finite(point) || Mathf.Abs(point.x) > 295 || Mathf.Abs(point.z) > 295) point = home;
+            if (!Finite(point) || AssaultLayout.Default.Outside(point, AssaultLayout.Default.RecoveryInset)) point = home;
             point.y = Mathf.Max(point.y, WarDirector.GroundPoint(point).y + 0.1f); transform.position = point;
             cargo = Mathf.Clamp(saved.cargo, 0, 12); cargoKind = saved.cargoKind; Deliveries = Mathf.Max(0, saved.deliveries);
             revivesAt = Time.time + Mathf.Max(0, saved.reviveSeconds - (float)offlineSeconds);

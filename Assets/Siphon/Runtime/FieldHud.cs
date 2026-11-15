@@ -207,7 +207,7 @@ namespace Siphon
         private void Map(WarDirector war, Rect bounds)
         {
             Panel(bounds);
-            Text(new Rect(bounds.x + 12, bounds.y + 8, bounds.width - 20, 25), "CONTACT MAP / 600m", medium, Color.cyan);
+            Text(new Rect(bounds.x + 12, bounds.y + 8, bounds.width - 20, 25), $"CONTACT MAP / {AssaultLayout.Default.Size:0}m", medium, Color.cyan);
             Rect map = new Rect(bounds.x + 12, bounds.y + 42, bounds.width - 24, bounds.height - 62);
             Fill(map, new Color(0.12f, 0.2f, 0.23f, 0.95f));
             Fill(new Rect(map.x, map.y, map.width * 0.3f, map.height), new Color(0.12f, 0.28f, 0.19f));
@@ -219,9 +219,8 @@ namespace Siphon
             }
             void Pip(Vector3 position, Color color, float size)
             {
-                float x = map.x + Mathf.Clamp01((position.x + 300) / 600) * map.width;
-                float y = map.y + (1 - Mathf.Clamp01((position.z + 300) / 600)) * map.height;
-                Fill(new Rect(x - size / 2, y - size / 2, size, size), color);
+                Vector2 point = AssaultLayout.Default.MapPoint(position, map);
+                Fill(new Rect(point.x - size / 2, point.y - size / 2, size, size), color);
             }
             foreach (var actor in Combatant.All)
                 if (actor.Alive && (actor.team == Team.Blue || actor.kind == EntityKind.Core))
@@ -233,8 +232,8 @@ namespace Siphon
                 foreach (var node in ResourceNode.All)
                     if (node.remaining > 0) Pip(node.transform.position,
                         node.kind == ResourceKind.Crystal ? new Color(0.85f, 0.4f, 1) : node.kind == ResourceKind.Timber ? Color.green : Color.yellow, 2);
-            Pip(new Vector3(228, 0, 92), new Color(0.85f, 0.4f, 1), 8);
-            Pip(new Vector3(-225, 0, -20), new Color(0.85f, 0.4f, 1), 6);
+            Pip(AssaultLayout.Planar(AssaultLayout.Default.FrostCamp), new Color(0.85f, 0.4f, 1), 8);
+            Pip(AssaultLayout.Planar(AssaultLayout.Default.ForestCamp), new Color(0.85f, 0.4f, 1), 6);
             if (war.RallyActive) Pip(war.RallyPoint, Color.yellow, 10);
             Pip(transform.position, Color.white, 7);
         }
