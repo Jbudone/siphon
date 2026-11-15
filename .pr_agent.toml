@@ -3,9 +3,18 @@ model = "openrouter/anthropic/claude-sonnet-5.5"
 fallback_models = []
 num_retries = 1
 max_model_tokens = 16000
+restricted_mode = true
+enable_auto_approval = false
+
+[github_action_config]
+# The synchronize event uses push_commands, not AUTO_REVIEW.
+handle_push_trigger = true
+push_commands = ["/review"]
 
 [pr_reviewer]
 num_max_findings = 5
+enable_review_labels_security = false
+enable_review_labels_effort = false
 extra_instructions = """
 Siphon is a Unity fast-movement team shooter. Report concrete correctness bugs.
 Focus on broken Unity references, movement/combat regressions, save compatibility,

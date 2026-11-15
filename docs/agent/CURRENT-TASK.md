@@ -1,8 +1,14 @@
-# A01 — First generated gun
+# W02 — Independent review and memory audit
 
-Status: Ready; Meshy and Unity AI access verified. Owner: root orchestrator. User authorization: 2026-11-15 roadmap and existing-credit use request.
+Status: Local setup verified; hosted activation blocked on destination and secret. User moved PR-Agent setup, separate review and mem0 assessment ahead of A01 on 2026-11-15.
 
-The executable task packet is below. W01 is complete; its summary preserves setup evidence.
+Scope: verify and repair PR-Agent configuration, add a separate fresh reviewer role, assess mem0 against Git-backed Markdown. Root owns workflow/handoff and memory audit; fresh Sol/medium `review_setup` worker owns PR-Agent files and reviewer profile.
+
+Local evidence: fresh Sol/medium implementation worker completed; TOML parsing, workflow YAML/config assertions, local Markdown links and Git whitespace checks passed. Upstream runner/config inspected and existing model confirmed in live OpenRouter catalog. Independent fresh Sol/medium reviewer `independent_review` found no actionable correctness findings and independently verified upstream event/config handling and the mem0 migration claims. No hosted review or engine validation is claimed.
+
+Hosted activation needs a GitHub destination: checkout has no remote, GitHub auth works as Jbudone, no matching Siphon repository was found under that account. Destination question is pending. Do not claim a live review until an actual Actions run and review are observed. A01 remains the next gameplay slice.
+
+The deferred A01 task packet is below. W01 is complete; its summary preserves setup evidence.
 
 ## Completed: W01 — Establish the development workflow
 
@@ -23,7 +29,7 @@ Worker slice: `asset_pipeline`, gpt-6.1-sol / medium, fresh context. Reason: bou
 
 Evidence: `python3 -B -m unittest discover -s tools -p 'test_meshy.py' -v` passed all seven checks. Preview dry-run made zero network calls. Workflow help/status/handoff/snapshot commands passed; CodeBurn exported only Siphon; TOML parsed; local Markdown links resolved; Git whitespace check passed. Profiles were written and project config loaded without error by the CLI; automatic scheduling/session resets were not implemented. No gameplay or engine validation was needed or claimed. Find the workflow commit with `git log -1 --oneline`.
 
-## Active packet: A01 — First generated gun
+## Deferred packet: A01 — First generated gun
 
 Status: Meshy credentials work through direnv (1900 credits observed). Unity AI access is verified with 884/1000 credits available. These services work independently.
 

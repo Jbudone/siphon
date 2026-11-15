@@ -25,12 +25,16 @@ The user made large Tribes-scale terrain, actual guns/models/animations, sound, 
 
 ## Next action
 
-W01 is complete: seven offline Meshy tests, preview dry-run, workflow status/handoff/snapshot, TOML parsing, Markdown links and Git whitespace checks passed. One worker (`asset_pipeline`, Sol/medium, fresh context) completed; no workers or paid jobs remain in flight. No gameplay edits or new engine validation.
+W02 precedes A01 at the user's request: finish PR-Agent setup, use a separate fresh reviewer, and assess mem0. GitHub auth works as Jbudone; no remote is configured and no Siphon repository was found under that account. The user has been asked for a repository destination. `OPENROUTER_API_KEY` is not loaded by this project's direnv; no secret value was printed. Hosted PR-Agent activation and an observed Actions review remain outstanding.
 
-Use A01 in [current task](CURRENT-TASK.md). Meshy is available: use `direnv exec . python3 tools/meshy.py` to submit/resume the saved rifle preview. The user completed Unity login. Cloud access and AI access are verified; the monitor service now succeeds and the cached login warning is cleared. No access action is needed from the user. If access remains blocked, take one bounded map-planning/measurement slice from M01; do not start a broad content rewrite. `python3 tools/workflow.py status` shows current Git state; `git log -1 --oneline` identifies the workflow commit. Raw telemetry is local/ignored. `.vscode/` was already present and remains untracked/untouched.
+Memory recommendation: retain Git-backed Markdown now; see [audit](MEMORY-AUDIT.md). No mem0 service was installed or given project data. Require evidence of improved project recall before adding it; current OSS ADD-only extraction retains superseded facts alongside new ones.
+
+Unity login and Cloud access passed at this session start. No engine mutation or paid generation was performed. A01 remains deferred; its saved packet remains in CURRENT-TASK.md. `.vscode/` is pre-existing and untouched.
 
 A user systemd timer `siphon-unity-auth.timer` is enabled every six hours. It exercises CLI token refresh with a Cloud GET. Failures produce desktop notifications (delivery verified), a failed service and a cached directory-entry warning. Five offline monitor tests pass; network failure does not get mislabeled as expiry. The timer cannot bypass revoked credentials; never ignore the alert. No auth tokens are copied to the project.
 
-## Session handoff rule
+## Session handoff
 
-Before stopping, replace this section with actual completed work, exact next command, uncommitted paths, in-flight worker/job IDs, and blockers. Do not leave session-specific assumptions as durable facts. Check Git and current task for the final W01 commit and verification.
+W02 local configuration passed TOML parsing, workflow YAML/config assertions, local Markdown link checks and Git whitespace checks. Separate fresh Sol/medium implementation and review agents completed; independent review found no actionable correctness findings. Hosted review remains unverified; hosted activation awaits the GitHub destination and Actions secret. Next command after a destination is selected: `gh repo view OWNER/REPO --json nameWithOwner,url`, then inspect `gh secret list --repo OWNER/REPO` before configuring credentials. Do not print secrets. Resume the current task, not the deferred paid rifle request.
+
+The verified local slice is committed with its handoff; use `git log -1 --oneline` for the revision. No workers remain in flight. `.vscode/` remains the only pre-existing untracked path and must stay untouched. No paid jobs are in flight. Check Git status for final committed state and CURRENT-TASK for actual verification evidence.

@@ -6,7 +6,7 @@ Read `docs/agent/STATE.md`, then the current task and only its named references.
 
 ## Work model
 
-The root agent is the orchestrator. It selects a bounded slice, supplies a fresh worker with explicit file ownership, reviews the result, integrates it, and updates the handoff. Use **one worker at a time** by default. Workers must not spawn workers. Use `fork_turns="none"` when supported and provide the task text plus file paths; do not inherit the full conversation.
+The root agent is the orchestrator. It selects a bounded slice, supplies a fresh worker with explicit file ownership, assigns a separate fresh reviewer, resolves findings, integrates the result, and updates the handoff. Use **one worker at a time** by default. Implementation and review run sequentially. The reviewer must not be the orchestrator or the implementing worker; it inspects the diff and evidence without editing source or merging. Workers must not spawn workers. Use `fork_turns="none"` when supported and provide the task text plus file paths; do not inherit the full conversation.
 
 Keep the loop simple: pick a useful change, build it, check it, commit it. Choose an available model for the task: `gpt-6-luna` for bounded docs/search/mechanical edits; `gpt-6.1-sol` for normal implementation and integration; `gpt-6-astra` for difficult authority, concurrency, architecture, or persistent failures. Use supported effort settings; keep model choice proportionate to the task. Escalate on evidence of difficulty. Do trivial work directly when delegation would cost more than it saves. Never claim routing occurred without observing the actual selection.
 
