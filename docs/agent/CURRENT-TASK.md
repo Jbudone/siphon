@@ -1,6 +1,6 @@
 # A01 — First generated gun
 
-Status: Blocked by generation access. Owner: root orchestrator. User authorization: 2026-11-15 roadmap and existing-credit use request.
+Status: Ready for Meshy; Unity AI awaits browser sign-in. Owner: root orchestrator. User authorization: 2026-11-15 roadmap and existing-credit use request.
 
 The executable task packet is below. W01 is complete; its summary preserves setup evidence.
 
@@ -25,7 +25,7 @@ Evidence: `python3 -B -m unittest discover -s tools -p 'test_meshy.py' -v` passe
 
 ## Active packet: A01 — First generated gun
 
-Status: Blocked by Meshy credentials and Unity AI access. These services can be unblocked independently.
+Status: Meshy credentials work through direnv (1900 credits observed). Unity AI plugin is installed; a browser sign-in is still needed. These services work independently.
 
 Read: AGENTS.md, docs/assets/PIPELINE.md, current request JSON, PlayerCombat.cs, AssaultSceneBuilder.cs, PlaygroundBuilder.cs. Inspect only relevant builder methods before editing.
 
@@ -35,4 +35,4 @@ Acceptance: correct scale/pivot/muzzle, no changed damage/cadence, URP materials
 
 If blocked: report exact missing access and preserve request/job state. Do useful independent roadmap work; do not repeatedly resubmit or repeatedly ask the user for the same credential.
 
-Next command once the credential is available: `python3 tools/meshy.py balance`, followed by `python3 tools/meshy.py submit docs/assets/requests/pulse-rifle-preview.json`. If the journal already has a job, resume it by ID. Unity AI account setup can proceed independently; a Meshy rifle does not require Unity AI to generate.
+Next command: `direnv exec . python3 tools/meshy.py submit docs/assets/requests/pulse-rifle-preview.json`. Balance was checked successfully; recheck if needed. If the journal already has a job, resume it by ID. Unity AI account setup can proceed independently; a Meshy rifle does not require Unity AI to generate.

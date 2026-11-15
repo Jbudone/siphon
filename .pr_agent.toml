@@ -1,0 +1,15 @@
+[config]
+model = "openrouter/anthropic/claude-sonnet-5.5"
+fallback_models = []
+num_retries = 1
+max_model_tokens = 16000
+
+[pr_reviewer]
+num_max_findings = 5
+extra_instructions = """
+Siphon is a Unity fast-movement team shooter. Report concrete correctness bugs.
+Focus on broken Unity references, movement/combat regressions, save compatibility,
+resource accounting, bot navigation/sensing and duplicate paid generation requests.
+Separate observed checks from claims. Keep feedback concise. Review is advisory;
+do not rewrite PR descriptions, edit source, or merge code.
+"""

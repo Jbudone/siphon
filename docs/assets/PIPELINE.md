@@ -6,10 +6,10 @@ Updated: 2026-11-15. Existing Meshy API and Unity AI credits are authorized for 
 
 | Provider | Observed access | Next step |
 | --- | --- | --- |
-| Meshy | No API key in this agent environment. No generation jobs submitted. | Supply credential location or MESHY_API_KEY; check balance and monthly refresh, then submit one pulse-rifle preview. |
-| Unity AI | Siphon has no Cloud IDs or generator packages; CLI login expired. Unity MCP returned Yendor as its project. | Restore account access, select the intended organization/project, open Siphon, verify tool target, then enable available generators. Do not operate on Yendor. |
+| Meshy | Working: .envrc loads vault entry meshy-key. Balance 1900 (930 monthly + 970 permanent). No jobs submitted. | Use direnv exec . for commands; submit/resume the rifle preview. |
+| Unity AI | CLI 1.0.0 and AI Generators 0.1.0-beta.1 installed. Auth broker running; doctor fails on missing login. | Complete unity auth login, then unity ai doctor. Existing default org is 1375988431442. CLI generation is independent of the Editor connection; do not mutate Yendor. |
 
-The Unity automation bridge and Unity's paid AI generators are different capabilities. A working bridge does not establish subscription access. Unity documents project linking, account setup, and its [AI menu](https://docs.unity.com/en-us/engine/6000.5/manual/unity-ai/ai-menu-access); verify packages and support against installed Unity 6000.6.0f1 before installation.
+The Unity automation bridge and Unity's paid AI generators are different capabilities. CLI generators are now available through `unity ai`; they do not require linking Siphon in the Editor. A six-hour access monitor alerts on login failures; see [workflow](../WORKFLOW.md). A working bridge does not establish subscription access. Unity documents project linking, account setup, and its [AI menu](https://docs.unity.com/en-us/engine/6000.5/manual/unity-ai/ai-menu-access); verify packages and support against installed Unity 6000.6.0f1 before installation.
 
 ## First assets
 
@@ -30,14 +30,14 @@ Working style assumption: original functional sci-fi industrial gear, clear silh
 
 ## Meshy helper
 
-Use `python3 tools/meshy.py --help` for exact syntax. It provides balance, submission, status, and staged downloads. Preview/refine uses the current [Text to 3D API](https://docs.meshy.ai/en/api/text-to-3d); [authentication](https://docs.meshy.ai/en/api/authentication) uses a bearer API key from the environment. Dry-run the committed request before submitting. No secret belongs in a request JSON, Git, logs, or a briefing.
+Use `direnv exec . python3 tools/meshy.py --help` for exact syntax. It provides balance, submission, status, and staged downloads. Preview/refine uses the current [Text to 3D API](https://docs.meshy.ai/en/api/text-to-3d); [authentication](https://docs.meshy.ai/en/api/authentication) uses a bearer API key from the environment. Dry-run the committed request before submitting. No secret belongs in a request JSON, Git, logs, or a briefing.
 
 ```sh
-python3 tools/meshy.py balance
-python3 tools/meshy.py submit docs/assets/requests/pulse-rifle-preview.json --dry-run
-python3 tools/meshy.py submit docs/assets/requests/pulse-rifle-preview.json
-python3 tools/meshy.py status TASK_ID
-python3 tools/meshy.py download TASK_ID
+direnv exec . python3 tools/meshy.py balance
+direnv exec . python3 tools/meshy.py submit docs/assets/requests/pulse-rifle-preview.json --dry-run
+direnv exec . python3 tools/meshy.py submit docs/assets/requests/pulse-rifle-preview.json
+direnv exec . python3 tools/meshy.py status TASK_ID
+direnv exec . python3 tools/meshy.py download TASK_ID
 ```
 
 After inspecting the preview, copy the refine example to a local request, replace its deliberately invalid placeholder with the accepted preview ID, and submit it once. Keep `artifacts/meshy/requests/` across sessions. An uncertain submission reserves its fingerprint; reconcile Meshy Request Logs before removing that reservation. Changing request JSON can incur a new paid job. Use `python3 -B -m unittest discover -s tools -p 'test_meshy.py' -v` for reproducible offline verification.

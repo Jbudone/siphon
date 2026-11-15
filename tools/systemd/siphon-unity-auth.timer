@@ -1,0 +1,9 @@
+[Unit]
+Description=Check Unity access every six hours and alert on login failures
+
+[Timer]
+OnStartupSec=2min
+OnUnitActiveSec=6h
+
+[Install]
+WantedBy=timers.target

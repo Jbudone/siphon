@@ -1,0 +1,7 @@
+[Unit]
+Description=Siphon Unity login refresh and access check
+
+[Service]
+Type=oneshot
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 %h/jdrive/jstuff/work/personal/siphon/tools/unity_auth.py --notify

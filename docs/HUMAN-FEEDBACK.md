@@ -8,12 +8,12 @@ Updated: 2026-11-15.
 
 ## Access needed from you
 
-One reply can unblock generation:
+**Unity sign-in only** (about one minute):
 
-1. Provide the location of an existing Meshy API credential, or make `MESHY_API_KEY` available to the agent environment. Do not paste the secret into chat.
-2. Name the Unity organization and Siphon Cloud project to use, or confirm a new Siphon project under that organization. Unity CLI reports expired login; reauthentication may require your browser. The connected editor currently points to Yendor.
+1. Complete the Unity browser login already started, or run `unity auth login` if its window is no longer open.
+2. Tell the agent when complete; it will verify Cloud and AI access and clear the alert.
 
-Agents should first use available credential paths and account tools; only request the unavoidable account action. This is setup, not a game test.
+Meshy credentials are connected through .envrc; no key needs to be supplied. Automatic Unity access checks and visible alerts are installed. The existing default Unity organization will be checked after login.
 
 ## Rules for adding a playtest request
 
