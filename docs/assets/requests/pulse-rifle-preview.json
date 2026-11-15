@@ -1,0 +1,11 @@
+{
+  "mode": "preview",
+  "prompt": "Original sci-fi pulse rifle for Siphon, a fast aerial team shooter. Single isolated hard-surface weapon, compact squared receiver, broad wedge barrel shroud, clearly visible circular emitter muzzle, open trigger guard, sturdy pistol grip, short shoulder stock, shallow top sight and inset energy-cell housing. Bold readable silhouette, restrained industrial field equipment, large clean surfaces and a few recessed panel seams. No hands, character, ammunition, background, floating pieces, text, logos or recognizable franchise features. Geometry only; neutral untextured model. Visual replacement only: preserve existing weapon balance, firing origin, collider and gameplay dimensions during later Unity fitting.",
+  "ai_model": "meshy-7.1",
+  "model_type": "standard",
+  "geometry_resolution": "standard",
+  "should_remesh": true,
+  "topology": "triangle",
+  "target_polycount": 8000,
+  "target_formats": ["fbx"]
+}

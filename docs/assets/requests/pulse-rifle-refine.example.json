@@ -1,0 +1,8 @@
+{
+  "mode": "refine",
+  "preview_task_id": "REPLACE_WITH_ACCEPTED_PREVIEW_TASK_ID",
+  "enable_pbr": true,
+  "texture_resolution": "2k",
+  "texture_prompt": "Original industrial sci-fi pulse rifle. Matte graphite receiver, desaturated steel barrel shroud, small ivory identification panels without text, subtle cyan emitter and energy-cell accents, restrained edge wear. Clear large material regions for distance readability; no baked lighting, logos or faction colors. Team markings will be applied in Unity.",
+  "target_formats": ["fbx"]
+}

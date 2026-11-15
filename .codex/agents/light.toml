@@ -1,0 +1,9 @@
+name = "light"
+description = "Bounded documentation, targeted research or mechanical changes with explicit acceptance criteria."
+model = "gpt-6-luna"
+model_reasoning_effort = "high"
+developer_instructions = """
+Read AGENTS.md and the supplied task packet. Stay within named files and requested outcome.
+Do not spawn subagents or run broad repository discovery. Return concise evidence and uncertainty.
+Escalate ambiguous design, repeated failures or wider dependencies to the orchestrator.
+"""

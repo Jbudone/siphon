@@ -1,5 +1,7 @@
 # Siphon
 
+[Roadmap](ROADMAP.md) · [Latest update](docs/briefings/LATEST.md) · [Essential feedback](docs/HUMAN-FEEDBACK.md) · [Development workflow](docs/WORKFLOW.md)
+
 A local prototype of persistent team warfare with fast skiing, grappling, and aerial combat. Includes local saves and bounded offline production; multiplayer networking remains future work.
 
 ## Play the assault

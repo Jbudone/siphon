@@ -32,7 +32,7 @@ Versioned local saves preserve bases, supplies, nodes, personal equipment and re
 
 Middle mouse marks expiring assault targets that commit combat roles and guide powered siege batteries. Siege calibration depends on survey optics and field engineering; charged arcing shells consume ferrite and alloy and favor structures. Friendly rally marks hold artillery fire. The player chooses future respawns through N, independently of bot priorities; powered outposts need a clear exit and have safe fallbacks.
 
-The next architectural milestone remains authoritative networking and responsiveness for the 32-human target. Local systems must not be mistaken for server authority, anti-cheat, prediction, replication, or a measured player capacity. Broader world expansion should follow that validation.
+The next architectural milestone remains authoritative networking and responsiveness for the 32-human target. Local systems must not be mistaken for server authority, anti-cheat, prediction, replication, or a measured player capacity. On 2026-11-15 the user moved a Tribes-scale map, actual guns/models/animations, sounds, VFX, UI/HUD, and defensive patrols into immediate follow-up, alongside establishing the development workflow and using existing Unity AI and Meshy credits. This revises the earlier expansion-after-networking sequence. A provisional 2 km × 2 km map is an agent starting assumption, not an accepted final dimension. See ROADMAP.md for current priorities and docs/WORKFLOW.md for agent memory, orchestration, release briefings, and telemetry.
 
 ## Rendering
 

@@ -1,5 +1,7 @@
 # Overnight iteration
 
+Historical work record. Current priorities are in [ROADMAP.md](../ROADMAP.md); current restart state is in [agent/STATE.md](agent/STATE.md). The old overnight authorization below records that session and is not a new instruction to run indefinitely. Final integration status below has not yet been reconciled against today's source/build.
+
 User authorization: continue improving the game throughout the offline night until available tokens are exhausted. Preserve the accepted movement and weapon baseline. Keep each playable milestone tested and maintain a Linux playtest build; do not simulate offline attacks on cores.
 
 ## Completed in source

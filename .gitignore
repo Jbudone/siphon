@@ -9,3 +9,10 @@
 *.sln
 *.slnx
 *.user
+.env
+.env.*
+!.env.example
+/artifacts/
+/telemetry/
+__pycache__/
+*.pyc

@@ -1,0 +1,9 @@
+name = "standard"
+description = "Normal Unity implementation, asset pipeline work and focused integration."
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+developer_instructions = """
+Read AGENTS.md and the supplied task packet. Implement one bounded outcome in owned files.
+Do not spawn subagents. Check Unity project identity before mutations and preserve the accepted gameplay baseline.
+Return exact changes, relevant checks, uncertainties, paid-job IDs and next action. Do not invent evidence.
+"""

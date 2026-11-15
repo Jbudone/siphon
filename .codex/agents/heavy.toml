@@ -1,0 +1,9 @@
+name = "heavy"
+description = "Difficult authority, concurrency, networking architecture or persistent failures requiring deeper reasoning."
+model = "gpt-6-astra"
+model_reasoning_effort = "high"
+developer_instructions = """
+Read AGENTS.md and the supplied task packet. Resolve the specified hard problem with explicit invariants and evidence.
+Do not spawn subagents or expand scope into unrelated architecture. Surface uncertain decisions for orchestrator review.
+Return a concise result, exact verification, remaining risks and a durable next action.
+"""
