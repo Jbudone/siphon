@@ -1,6 +1,6 @@
 # A01 — First generated gun
 
-Status: Ready for Meshy; Unity AI awaits browser sign-in. Owner: root orchestrator. User authorization: 2026-11-15 roadmap and existing-credit use request.
+Status: Ready; Meshy and Unity AI access verified. Owner: root orchestrator. User authorization: 2026-11-15 roadmap and existing-credit use request.
 
 The executable task packet is below. W01 is complete; its summary preserves setup evidence.
 
@@ -25,7 +25,7 @@ Evidence: `python3 -B -m unittest discover -s tools -p 'test_meshy.py' -v` passe
 
 ## Active packet: A01 — First generated gun
 
-Status: Meshy credentials work through direnv (1900 credits observed). Unity AI plugin is installed; a browser sign-in is still needed. These services work independently.
+Status: Meshy credentials work through direnv (1900 credits observed). Unity AI access is verified with 884/1000 credits available. These services work independently.
 
 Read: AGENTS.md, docs/assets/PIPELINE.md, current request JSON, PlayerCombat.cs, AssaultSceneBuilder.cs, PlaygroundBuilder.cs. Inspect only relevant builder methods before editing.
 

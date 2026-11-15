@@ -8,12 +8,7 @@ Updated: 2026-11-15.
 
 ## Access needed from you
 
-**Unity sign-in only** (about one minute):
-
-1. Complete the Unity browser login already started, or run `unity auth login` if its window is no longer open.
-2. Tell the agent when complete; it will verify Cloud and AI access and clear the alert.
-
-Meshy credentials are connected through .envrc; no key needs to be supplied. Automatic Unity access checks and visible alerts are installed. The existing default Unity organization will be checked after login.
+**None.** Meshy and Unity AI access are verified. Unity Cloud checks succeed, the login warning is cleared, and the six-hour monitoring timer is active.
 
 ## Rules for adding a playtest request
 

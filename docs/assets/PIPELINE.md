@@ -7,7 +7,7 @@ Updated: 2026-11-15. Existing Meshy API and Unity AI credits are authorized for 
 | Provider | Observed access | Next step |
 | --- | --- | --- |
 | Meshy | Working: .envrc loads vault entry meshy-key. Balance 1900 (930 monthly + 970 permanent). No jobs submitted. | Use direnv exec . for commands; submit/resume the rifle preview. |
-| Unity AI | CLI 1.0.0 and AI Generators 0.1.0-beta.1 installed. Auth broker running; doctor fails on missing login. | Complete unity auth login, then unity ai doctor. Existing default org is 1375988431442. CLI generation is independent of the Editor connection; do not mutate Yendor. |
+| Unity AI | CLI 1.0.0 and AI Generators 0.1.0-beta.1 installed. Login, renewable auth broker, subscription/terms and service verified; 884/1000 credits available. | Use the verified default org josh-none (1375988431442). CLI generation is independent of the Editor connection; do not mutate Yendor. |
 
 The Unity automation bridge and Unity's paid AI generators are different capabilities. CLI generators are now available through `unity ai`; they do not require linking Siphon in the Editor. A six-hour access monitor alerts on login failures; see [workflow](../WORKFLOW.md). A working bridge does not establish subscription access. Unity documents project linking, account setup, and its [AI menu](https://docs.unity.com/en-us/engine/6000.5/manual/unity-ai/ai-menu-access); verify packages and support against installed Unity 6000.6.0f1 before installation.
 
