@@ -20,7 +20,7 @@ Unity 6000.6.0f1/URP17.6.0. Startup auth check failed because CLI had drifted to
 
 No paid generation this slice. Prior Meshy rifle preview/refine IDs and 1870 credit observation live in [asset record](../assets/PULSE-RIFLE.md); both downloaded, never resubmit. Use direnv for credentials. Recheck balance before new jobs. Git LFS stores rifle binary art and source assets retain .meta pairs.
 
-Git-backed Markdown remains memory; mem0 deferred. One fresh worker, then separate reviewer, then root integration. User selected public `Jbudone/siphon`: https://github.com/Jbudone/siphon. Repository created and origin configured; publish main and verify update pages/screenshots. No Actions secrets were present when checked. Hosted PR-Agent still needs OPENROUTER_API_KEY; local review works. No secret uploaded.
+Git-backed Markdown remains memory; mem0 deferred. One fresh worker, then separate reviewer, then root integration. User selected public `Jbudone/siphon`: https://github.com/Jbudone/siphon. Public main pushed and origin/main tracks it; all six LFS assets uploaded (27MB). GitHub-rendered README, UPDATES and latest briefing verified; all four public screenshot downloads matched local PNG hashes. No Actions secrets were present when checked. Hosted PR-Agent still needs OPENROUTER_API_KEY; local review works. No secret uploaded.
 
 ## Handoff
 
