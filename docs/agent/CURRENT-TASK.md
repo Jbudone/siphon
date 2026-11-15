@@ -29,6 +29,6 @@ M01 expansion: opt-in large candidate with separate scene, mesh/navigation paths
 
 ## Access and publication
 
-Initial auth check failed because CLI unexpectedly reported beta.8 and printed help instead of Cloud JSON. `unity self-update --channel stable --yes --json --non-interactive` restored 1.0.0; repeated `python 3 tools/unity_auth.py` passed. No expired-login diagnosis or user action needed. No Yendor editor mutation.
+Initial auth check failed because CLI unexpectedly reported beta.8 and printed help instead of Cloud JSON. `unity self-update --channel stable --yes --json --non-interactive` restored 1.0.0; repeated `python3 tools/unity_auth.py` passed. No expired-login diagnosis or user action needed. No Yendor editor mutation.
 
-GitHub destination question remains pending. No remote configured and no matching Siphon repo found under Jbudone. User authorized push but did not supply destination; do not create/push to a guessed repo. PR-Agent hosted execution also needs its Actions secret. No repo created, push, secret upload or hosted execution is claimed. `.vscode/` remains pre-existing/untracked/untouched.
+User selected public `Jbudone/siphon` on 2026-11-15. Repository created at https://github.com/Jbudone/siphon and origin configured. Publish committed main with Git LFS, then verify remote HEAD and GitHub-rendered UPDATES/briefings/images. No Actions secrets were present when checked; PR-Agent hosted execution still needs OPENROUTER_API_KEY. No secret uploaded or hosted review claimed. `.vscode/` remains pre-existing/untracked/untouched.

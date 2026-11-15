@@ -16,11 +16,11 @@ M01 opt-in larger-map candidate: isolate scene, generated mesh/navigation and sa
 
 ## Access and workflow
 
-Unity 6000.6.0f1/URP17.6.0. Startup auth check failed because CLI had drifted to beta.8/help output. Stable 1.0.0 restored by self-update; repeated Unity login/Cloud check passed. No user login needed. MCP was previously Yendor; do not mutate unless projectPath is verified Siphon. Engine work used explicit Siphon batch path. Six-hour auth monitor remains enabled; report actual failures.
+Unity 6000.6.0f1/URP17.6.0. Startup auth check failed because CLI had drifted to beta.8/help output. Stable 1.0.0 restored by self-update; Unity login/Cloud check passed again for publication. No user login needed. MCP was previously Yendor; do not mutate unless projectPath is verified Siphon. Engine work used explicit Siphon batch path. Six-hour auth monitor remains enabled; report actual failures.
 
 No paid generation this slice. Prior Meshy rifle preview/refine IDs and 1870 credit observation live in [asset record](../assets/PULSE-RIFLE.md); both downloaded, never resubmit. Use direnv for credentials. Recheck balance before new jobs. Git LFS stores rifle binary art and source assets retain .meta pairs.
 
-Git-backed Markdown remains memory; mem0 deferred. One fresh worker, then separate reviewer, then root integration. GitHub auth works as Jbudone but no remote/destination exists; user destination question remains pending. No repo created/push/secret upload. Hosted PR-Agent still needs destination and OPENROUTER_API_KEY Actions secret; local review works.
+Git-backed Markdown remains memory; mem0 deferred. One fresh worker, then separate reviewer, then root integration. User selected public `Jbudone/siphon`: https://github.com/Jbudone/siphon. Repository created and origin configured; publish main and verify update pages/screenshots. No Actions secrets were present when checked. Hosted PR-Agent still needs OPENROUTER_API_KEY; local review works. No secret uploaded.
 
 ## Handoff
 
