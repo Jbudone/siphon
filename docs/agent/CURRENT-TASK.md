@@ -1,43 +1,11 @@
 # W03 — paired hosted review trial
 
-Status: In progress at user request 2026-11-15. Configure and actually try both PR-Agent and Alibaba OpenCodeReview, retain separately identified results so the user can audit later. Root configured Actions OPENROUTER_API_KEY from the existing local direnv key; its value was never printed. Fresh Sol/medium worker dual_review_setup owns workflow/config changes. Root owns docs/PR execution and integration; independent reviewer follows. No gameplay changes.
+Status: First trial completed; OCR partial coverage requires a bounded correction. User requested both PR-Agent and Alibaba OpenCodeReview for later comparison. Setup published on main as 275642e after fresh Sol implementation and fresh separate Sol review (no actionable findings). Actions OPENROUTER_API_KEY configured from the existing local direnv key; no value printed. User-modified `.envrc` and pre-existing `.vscode/` remain untouched and unstaged.
 
-Preserve user-modified `.envrc` and pre-existing `.vscode/`; never stage them. Initial model for both tools: `anthropic/claude-sonnet-5.5` through OpenRouter. Pin OCR action/runtime and record PR-Agent runtime caveat. Run on the same PR revisions; full-range reviews and separate comments/artifacts. Hosted run status is not a quality score. No Langfuse installation or automatic judging. See [trial record](../reviews/README.md).
+[Trial001](../reviews/trial-001.md): https://github.com/Jbudone/siphon/pull/1, base 1cc509d, head 275642e. Historical replay of already accepted 600m layout; DO NOT MERGE into the old base. Both use OpenRouter anthropic/claude-sonnet-5.5; custom excludes matched ten C# paths in non-billable preview. OCR action and CLI pinned, artifacts 90days; PR-Agent wrapper is pinned but pulls rolling runtime. No winner/cost claim. PR-Agent run43782869330 posted no major issues; OCR run43782869368 posted partial (ten C# files not dispatched under100000 projected budget). See trial001 result JSON. Do not rerun blindly. Worker dual_review_setup is adjusting OCR budget/partial-status verification; publish after separate review and open trial002 at a new fixed head. Root must record actual runs, coverage, outputs and any failures, then close replay PR without deleting audit branches.
 
-Root plan: validate config with separate reviewer, publish workflows, then open an explicitly labeled historical replay PR for the real 600m layout changes (base 1cc509d) so both tools see code rather than a documentation-only setup diff. Record exact base/head/run URLs, observed outputs and limitations. Do not merge the replay PR into the old baseline. Paid review usage is implied by the requested trial; no paid asset generation.
+Next exact command: `gh run list --repo Jbudone/siphon --branch review-trials/layout-001 --limit 10 --json databaseId,name,status,conclusion,url,headSha`. Capture run IDs before resuming or rerunning; do not duplicate billable reviews blindly. No paid asset jobs or Unity mutation this slice. Unity auth check passed.
 
-## Previous M01 evidence
+Local checks passed: worker actionlint1.7.11 on both workflows, supported inputs/rule schema, runtime checksum, C# rule merge, matching custom exclusions; root JSON/TOML/YAML and links; independent review verifies artifacts/comment isolation/gates/permissions. Model inference/hosted coverage remains unverified pending actual jobs.
 
-
-Completed slice 2026-11-15. Fresh Sol/medium `terrain_audit` wrote [dependency plan](../maps/M01-PLAN.md); fresh Sol/medium `layout_contract` implemented bounded code; fresh separate Sol/medium `layout_review` found no actionable correctness findings. Root integrated and ran sequential engine checks. No paid jobs.
-
-## Outcome
-
-New immutable runtime AssaultLayout.Default owns existing 600m extent,5m recovery/target inset,10m save inset, terrain/nav density, base/spawn/camp anchors and HUD projection. Builder/baker, navigation defaults, bot recovery/restore, target validation, HUD and player-save restore use it. No map enlargement, save-schema, movement tuning or weapon balance changes. Movement lab remains untouched; full movement validator not rerun. See [briefing](../briefings/2026-11-15-layout.md) and [tested build inputs/outputs](../maps/M01-BUILD.json).
-
-GitHub-facing UPDATES.md links all briefings and actual-build screenshots, with README entry point and dated archive. Relative image links and regular Git storage preserve GitHub rendering. GitHub Markdown API rendered the table, expandable gallery and 3images successfully. No Pages hosting or downloadable release is implied.
-
-## Exact engine checks
-
-Working directory `/home/jbud/jdrive/jstuff/work/personal/siphon`; explicit Siphon project path used. Run sequentially:
-
-```sh
-UNITY=/home/jbud/Unity/Hub/Editor/6000.6.0f1/Editor/Unity
-"$UNITY" -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.LayoutValidation.RebuildAndCheck -quit -logFile /tmp/siphon-layout-generation.log
-"$UNITY" -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.LayoutValidation.Run -logFile /tmp/siphon-layout-runtime.log
-"$UNITY" -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.FieldValidation.Run -logFile /tmp/siphon-layout-field-validation.log
-"$UNITY" -batchmode -nographics -projectPath /home/jbud/jdrive/jstuff/work/personal/siphon -executeMethod Siphon.Editor.PrototypeArtifacts.BuildLinuxCandidate -quit -logFile /tmp/siphon-layout-candidate-build.log
-xvfb-run -a -s '-screen 0 1280x720x24' Builds/SiphonCandidate/Siphon.x86_64 -siphon-smoke -siphon-soak 25 -siphon-capture-weapons -siphon-capture /home/jbud/jdrive/jstuff/work/personal/siphon/artifacts/m01/layout-baseline.png -screen-width 1280 -screen-height 720 -screen-fullscreen 0 -logFile /tmp/siphon-layout-smoke.log
-```
-
-All five exited 0. Generation: original terrain topology/extent, nav coverage, anchors, rifle prefab/reload and HUD projection passed. Runtime: inclusive target/bot295m and player-save290m edges, plus just beyond, on all four axes passed. Field: navigation, legacy version 1 readability/atomic recovery, save roundtrip, economy, shields, sensors, respawn, bot movement and victory passed. Candidate smoke:25s, 19 bots, 4 deliveries, 145 navigation searches / 0 failures, weapon switching/firing/recoil passed. Actual screenshot inspected and committed as `docs/images/layout-baseline.png`. Software-rendered startup worst frame 2527ms is not a performance benchmark. Existing Builds/Siphon not replaced.
-
-## Next bounded slice
-
-M01 expansion: opt-in large candidate with separate scene, mesh/navigation paths and save/layout identity before relocating bases/content. Read plan and only AssaultLayout, scene builder, NavigationBaker, WarDirector, FieldSaveSystem and bot objective/respawn selection as required. Provisional 2km × 2km and 1km base spacing require measured traversal, seam/recovery/reachability checks and named-hardware timing; no such large-map result exists yet. Preserve 600m baseline and movement lab. Exact first command: `git status --short`.
-
-## Access and publication
-
-Initial auth check failed because CLI unexpectedly reported beta.8 and printed help instead of Cloud JSON. `unity self-update --channel stable --yes --json --non-interactive` restored 1.0.0; repeated `python3 tools/unity_auth.py` passed. No expired-login diagnosis or user action needed. No Yendor editor mutation.
-
-User selected public `Jbudone/siphon` on 2026-11-15. Repository created at https://github.com/Jbudone/siphon; main pushed and origin configured/tracking. All six LFS objects uploaded (27MB). Remote main matched local 02f6197 when publication was checked. GitHub-rendered README, UPDATES and latest briefing verified; all four public screenshot PNG downloads matched local hashes. Subsequent handoff-only commit is published with the same verification of remote/local HEAD. No Actions secrets were present when checked; PR-Agent hosted execution still needs OPENROUTER_API_KEY. No secret uploaded or hosted review claimed. `.vscode/` remains pre-existing/untracked/untouched.
+After W03: resume M01 opt-in larger-map candidate with isolated scene/generated assets/save layout identity, following docs/maps/M01-PLAN.md. Existing 600m layout, accepted movement/weapons and movement lab remain the baseline. Previous exact engine evidence lives in docs/briefings/2026-11-15-layout.md and docs/maps/M01-BUILD.json; no new game build in W03.

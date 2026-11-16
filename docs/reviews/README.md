@@ -10,7 +10,7 @@ Use the PR discussions and retained reports to inspect confirmed correctness bug
 
 ## Trial record
 
-First paired run is being set up. Links, exact revisions, provider/model and actual outcomes will be added after the hosted runs. No quality or cost result is claimed yet.
+[Trial001](trial-001.md) replays the accepted layout change in [PR#1](https://github.com/Jbudone/siphon/pull/1). PR-Agent posted no major issues. OCR reported partial coverage despite a green workflow; a coverage-status check and larger bounded guard are being tried next. This is not a valid paired source-review result and establishes no tool preference.
 
 ## Retention and limits
 

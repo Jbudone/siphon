@@ -33,6 +33,7 @@ Switching to the disc keeps its current placeholder while the new rifle is hidde
 
 | Update | What changed | Evidence |
 | --- | --- | --- |
+| [2026-11-15 — Paired review-tool trial](docs/reviews/README.md) | PR-Agent and Alibaba OpenCodeReview; separate outputs for later audit | Hosted trial evidence and coverage limits; no gameplay change |
 | [2026-11-15 — Map layout foundation](docs/briefings/2026-11-15-layout.md) | Shared current layout and GitHub update pages; larger map still planned | Generation/runtime/field checks and new candidate smoke passed |
 | [2026-11-15 — First generated rifle](docs/briefings/2026-11-15-rifle.md) | First-person model, URP materials, persistent prefab; Stalker initialization and validator fixes | Actual-build screenshots and passing checks |
 | [2026-11-15 — Independent review and memory audit](docs/briefings/2026-11-15-review.md) | Separate reviewer role, PR-Agent fixes; mem0 deferred | Configuration checks and independent review; no game build |

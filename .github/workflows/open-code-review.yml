@@ -29,7 +29,7 @@ jobs:
           review_concurrency: '1'
           effort: medium
           # Aggregate usage guard; final rounds can exceed it. Not a dollar cap.
-          max_tokens_budget: '100000'
+          max_tokens_budget: '300000'
           review_task_timeout: '10'
           llm_timeout: '180'
           rule: .github/review-rules.json
@@ -50,3 +50,34 @@ jobs:
             /tmp/ocr-stderr.log
           if-no-files-found: warn
           retention-days: 90
+      - name: Verify selected review coverage completed
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          try:
+              result = json.loads(Path('/tmp/ocr-result.json').read_text())
+              manifest = result['manifest']
+              if manifest['schema_version'] != 'ocr.run-manifest/v1':
+                  raise ValueError('Unsupported review manifest schema')
+              coverage = manifest['coverage']
+              selected = {item['item_id'] for item in coverage['selected']}
+              finished = {item['item_id'] for key in ('completed', 'reused')
+                          for item in coverage[key]}
+              state = manifest['terminal_state']
+              complete = (state == 'complete' or (state == 'skipped' and not selected))
+              if (not complete or coverage['failed'] or coverage['waived']
+                      or selected != finished):
+                  raise ValueError(
+                      f"Review coverage {state}: {len(finished)}/{len(selected)} completed/reused; "
+                      f"{len(coverage['failed'])} failed, {len(coverage['waived'])} waived. "
+                      'Inspect the retained report; zero findings does not mean complete coverage.')
+              print(f'Review coverage {state}: {len(finished)}/{len(selected)} selected items completed/reused.')
+          except (OSError, ValueError, KeyError, TypeError) as error:
+              print(f'::error::Open Code Review coverage verification failed: {error}')
+              sys.exit(1)
+          PY
