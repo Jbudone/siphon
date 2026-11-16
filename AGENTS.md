@@ -22,7 +22,7 @@ Before a fresh orchestrator session, update STATE and the task with completed wo
 - Meshy/Unity AI use of existing credits is authorized. Check balance/expiry, persist job IDs before continuing, avoid duplicate paid requests, stage and inspect output, and record prompts/provider/model/credits/provenance. Do not buy credits or enable paid overages without authorization. See `docs/assets/PIPELINE.md`.
 - Write an update briefing when there are useful changes to show, not for every edit. Keep GitHub-facing `UPDATES.md`, `docs/briefings/LATEST.md` and ROADMAP's latest link current; commit briefings and actual-build screenshots together using relative links so they render directly on GitHub. Keep it concise; label unverified work and uncertain agent decisions. Capture screenshots from the actual build for visible changes.
 - Keep human requests in `docs/HUMAN-FEEDBACK.md`: at most three, preferably zero, with exact build, steps, time estimate, and a decision the answer unlocks. Do all automated checks first. Do not ask the user to retest accepted movement without evidence of regression.
-- Use PR-Agent for advisory PR review; address concrete findings. CodeBurn tracks usage; manual per-slice metrics are optional. Avoid extra process that does not help deliver the current change.
+- Use PR-Agent and Alibaba OpenCodeReview for advisory PR review during the comparison trial; address concrete findings and preserve coverage/output evidence in docs/reviews. Keep the separate fresh local reviewer. CodeBurn tracks usage; manual per-slice metrics are optional. Avoid extra process that does not help deliver the current change.
 
 ## Communication
 

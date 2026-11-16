@@ -10,7 +10,7 @@ Use the PR discussions and retained reports to inspect confirmed correctness bug
 
 ## Trial record
 
-[Trial001](trial-001.md) replays the accepted layout change in [PR#1](https://github.com/Jbudone/siphon/pull/1). PR-Agent posted no major issues. OCR reported partial coverage despite a green workflow; a coverage-status check and larger bounded guard are being tried next. This is not a valid paired source-review result and establishes no tool preference.
+[Trial 001](trial-001.md) replays the accepted layout change in [PR#1](https://github.com/Jbudone/siphon/pull/1). PR-Agent posted no major issues. OCR reported partial coverage despite a green workflow; the corrected [trial 002](trial-002.md) completed OCR coverage (13/13) and both tools posted no major findings. PR-Agent pruned its diff under the 16k cap, so equal coverage is not proven. Both remain enabled; audit later using additional real PRs. No tool preference or exact cost has been established.
 
 ## Retention and limits
 

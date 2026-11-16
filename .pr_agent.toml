@@ -1,10 +1,8 @@
 [config]
 model = "openrouter/anthropic/claude-sonnet-5.5"
 fallback_models = []
-num_retries = 1
 max_model_tokens = 16000
 restricted_mode = true
-enable_auto_approval = false
 
 [ignore]
 # Keep source coverage close to Open Code Review. PR-Agent uses fnmatch;
