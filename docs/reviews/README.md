@@ -12,6 +12,8 @@ Use the PR discussions and retained reports to inspect confirmed correctness bug
 
 [Trial 001](trial-001.md) replays the accepted layout change in [PR#1](https://github.com/Jbudone/siphon/pull/1). PR-Agent posted no major issues. OCR reported partial coverage despite a green workflow; the corrected [trial 002](trial-002.md) completed OCR coverage (13/13) and both tools posted no major findings. PR-Agent pruned its diff under the 16k cap, so equal coverage is not proven. Both remain enabled; audit later using additional real PRs. No tool preference or exact cost has been established.
 
+[Trial 003](trial-003.md) reviews the actual candidate-isolation [PR #3](https://github.com/Jbudone/siphon/pull/3). Both posted zero major findings; OCR completed seven selected C# files, while PR-Agent again pruned context. Reports are retained; no preference established.
+
 ## Retention and limits
 
 GitHub PR comments/reviews retain the discussion. Actions artifacts retain the supported machine reports for the configured period; copy useful records into this directory before they expire. Avoid committing credentials, signed download URLs or provider headers. Generated Unity scenes, imported assets and LFS pointers are poor inputs for source review; record each tool's actual exclusions rather than claiming identical coverage. Human checks of Unity references remain necessary.

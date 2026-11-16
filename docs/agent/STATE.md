@@ -8,11 +8,11 @@ M01 candidate isolation: opt-in **600m clone**, separate scene/mesh/navigation/b
 
 Targeted generation/persistence/reload validator exit 0; default FieldValidation exit 0; separate Linux build exit 0; rendered 25s smoke exit 0, 19 bots/four deliveries/153 navigation searches/zero failures, weapon switching/firing/recoil passed. Screenshot inspected. Full movement validator not rerun. Xvfb/llvmpipe is not performance evidence. Candidate output Builds/SiphonMapCandidate600; existing builds untouched. No 2km geometry or reachability claim.
 
-GitHub-facing UPDATES.md links briefings/screenshots in regular Git. Fresh Sol implementation, separate initial review and uninvolved independent follow-up source review completed. Initial scene-index assumption corrected against actual engine behavior; final outcome tests passed. Hosted reviews pending on this PR.
+GitHub-facing UPDATES.md links briefings/screenshots in regular Git. Fresh Sol implementation, separate initial review and uninvolved independent follow-up source review completed. Initial scene-index assumption corrected against actual engine behavior; final outcome tests passed. Both hosted reviews completed on merged PR #3; [trial 003](../reviews/trial-003.md) retains outputs. OCR completed seven selected C# files; PR-Agent pruned context; zero major findings.
 
 ## Next action
 
-Finish publishing candidate isolation with both advisory hosted reviews; record actual findings/coverage and resolve concrete issues. Then select one bounded terrain-expansion slice using [M01 plan](../maps/M01-PLAN.md), with new layout/save identity before geometry changes. Proposed 2km dimensions and tile budgets remain provisional. Preserve accepted 600m map, rifle and movement lab. Measure routes/seams/recovery/performance before accepting expansion.
+Select one bounded terrain-expansion slice using [M01 plan](../maps/M01-PLAN.md), with new layout/save identity before geometry changes. Proposed 2km dimensions and tile budgets remain provisional. Preserve accepted 600m map, rifle and movement lab. Measure routes/seams/recovery/performance before accepting expansion.
 
 ## Access and workflow
 
@@ -26,4 +26,4 @@ W03 complete: PR-Agent and Alibaba OpenCodeReview enabled for internal non-draft
 
 ## Handoff
 
-Candidate isolation on feat/map-candidate-isolation, base b6f71c1. Engine tests/build/smoke and independent reviews complete; no model/asset jobs in flight yet. Next exact command: `git status --short`, then publish reviewed slice and open its PR to run both hosted reviewers. Preserve user-modified `.envrc` and pre-existing untracked `.vscode/`, untouched and uncommitted. No blocker or human playtest request. Source/generated assets, screenshot, docs and .meta pairs must be committed together; build artifacts/logs ignored. Check actual Git status before integration.
+Candidate isolation merged via PR #3 as 589d90b; source head 0cdbbe6. Engine tests/build/smoke, independent source reviews and both hosted reports complete; no model/asset jobs in flight. Final docs archive published on main. Next exact command: `git status --short`, then read CURRENT-TASK and M01-PLAN to choose a bounded terrain-expansion task. Preserve user-modified `.envrc` and pre-existing untracked `.vscode/`, untouched and uncommitted. No blocker or human playtest request. Build artifacts/logs ignored. Check actual Git status before the next slice.

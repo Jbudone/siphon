@@ -1,0 +1,656 @@
+{
+  "pr": 3,
+  "head": "0cdbbe66606d80ae88998ed56b38c11daacd48b2",
+  "base": "b6f71c1a7ac9bc15b2f0ade317b11d6e4299b3ce",
+  "ocr_run": 43787081123,
+  "pr_agent_run": 43787081142,
+  "pr_url": "https://github.com/Jbudone/siphon/pull/3",
+  "merge_commit": "589d90b85b58eea700f0fe1063355dd0d4c3c2a0",
+  "pr_agent_context_estimate_tokens": 17850,
+  "pr_agent_pruned_diff": true,
+  "pr_agent_billed_tokens": null,
+  "attributable_cost": null,
+  "ocr_report": {
+    "status": "complete",
+    "llm": {
+      "model": "anthropic/claude-sonnet-5.5"
+    },
+    "message": "Review complete: 0 finding(s) across 7 selected item(s).",
+    "summary": {
+      "files_reviewed": 7,
+      "comments": 0,
+      "total_tokens": 237476,
+      "input_tokens": 225644,
+      "output_tokens": 11832,
+      "elapsed": "1m36s"
+    },
+    "tool_calls": {
+      "total": 11,
+      "by_tool": {
+        "code_search": 6,
+        "file_read": 4,
+        "file_read_diff": 1
+      },
+      "failure": 0,
+      "failure_by_tool": {},
+      "failure_details": []
+    },
+    "comments": [],
+    "groups": [
+      {
+        "label": "Editor scene building, navigation baking, and candidate isolation validation",
+        "files": [
+          "Assets/Siphon/Editor/AssaultSceneBuilder.cs",
+          "Assets/Siphon/Editor/CandidateIsolationValidation.cs",
+          "Assets/Siphon/Editor/NavigationBaker.cs",
+          "Assets/Siphon/Editor/PrototypeArtifacts.cs"
+        ]
+      },
+      {
+        "label": "Runtime layout, save system, and war director",
+        "files": [
+          "Assets/Siphon/Runtime/AssaultLayout.cs",
+          "Assets/Siphon/Runtime/FieldSaveSystem.cs",
+          "Assets/Siphon/Runtime/WarDirector.cs"
+        ]
+      }
+    ],
+    "session_id": "4ef624ed-1c54-4ca5-912c-50cd63b22cc1",
+    "manifest": {
+      "schema_version": "ocr.run-manifest/v1",
+      "run_id": "4ef624ed-1c54-4ca5-912c-50cd63b22cc1",
+      "operation": "review",
+      "terminal_state": "complete",
+      "repository": {
+        "identity_sha256": "a9a530de83953dabe2d44d7e4ac3727238acc7b8de1f671cd01a538c49ee7cb3"
+      },
+      "input": {
+        "mode": "range",
+        "requested_from": "b6f71c1a7ac9bc15b2f0ade317b11d6e4299b3ce",
+        "requested_head": "0cdbbe66606d80ae88998ed56b38c11daacd48b2",
+        "resolved_base": "b6f71c1a7ac9bc15b2f0ade317b11d6e4299b3ce",
+        "resolved_head": "0cdbbe66606d80ae88998ed56b38c11daacd48b2",
+        "exact_range": "b6f71c1a7ac9bc15b2f0ade317b11d6e4299b3ce..0cdbbe66606d80ae88998ed56b38c11daacd48b2",
+        "source_artifact_sha256": "c2c9eca432c0a105577d4270a43fda9d7579d8fe47a14f7d690929a918db01cc"
+      },
+      "execution": {
+        "ocr_version": "v1.13.10",
+        "model": "anthropic/claude-sonnet-5.5",
+        "configured_concurrency": 1,
+        "max_tool_request_times": 100,
+        "rule_config_sha256": "1bcc9e2620bd11e7eda6047340b2ae573bc7931547e49a9739b63691c4fc470a",
+        "runtime_config_sha256": "7e4bd6df4c3cdb5771d582d43f5f3ef9410bf03794af0530ee9ff67af2c4591e"
+      },
+      "coverage": {
+        "selected": [
+          {
+            "item_id": "02ff77829ee993149ba5b9fb1fbb7d5679223b71ed80eb65e9f99812c491af74",
+            "path": "Assets/Siphon/Editor/CandidateIsolationValidation.cs",
+            "fingerprint": "91671ee42288c49b55b9149de3d2ae3f9dd3ea438468c8a8419f740095cc8008"
+          },
+          {
+            "item_id": "2dd5986177bb53fc5ee71c469e916d0c1a9f51b39521f6fef30a7dcce69905c8",
+            "path": "Assets/Siphon/Runtime/WarDirector.cs",
+            "fingerprint": "e4f12f808c60d8dfc624c10c0a6bdcb7b35aedd508cd1597948bcf94645c90eb"
+          },
+          {
+            "item_id": "2ed50ac91d97a4fcba69b791a747dae6ed161a6bb602d049b80eed9af4c9be67",
+            "path": "Assets/Siphon/Editor/NavigationBaker.cs",
+            "fingerprint": "6152bdd54e89b0755035c25f8196e3106337187984584818e9d82f6be2026ac4"
+          },
+          {
+            "item_id": "362c229e5aedacc609801d07744833e42d8624558e75cd9a7c3361b57a39b021",
+            "path": "Assets/Siphon/Editor/PrototypeArtifacts.cs",
+            "fingerprint": "18acedd595a1a3a4dbda8c79591ba4837e754bac7e3dfe8c71133d52aa737428"
+          },
+          {
+            "item_id": "550c1cce1a9b52e8e8286a98d19ae5eae7580789cad6370c9b741708e0403f9e",
+            "path": "Assets/Siphon/Runtime/FieldSaveSystem.cs",
+            "fingerprint": "5b73af17cd28be4fcd6a6dd0f10cb3cc628f07f76925df7d2421487a4e807323"
+          },
+          {
+            "item_id": "9db50bab1f721a5016bc2e150ace001a35e6c50027e74ce31b73cc2873b08f37",
+            "path": "Assets/Siphon/Editor/AssaultSceneBuilder.cs",
+            "fingerprint": "908e06b510ccbab9bc7928ca48ae7db638ce259e33681004396ba14aa7455e6d"
+          },
+          {
+            "item_id": "b17f45ee4e72a7042a689eee0d1f9d6266540a75425a8f50bff106bb3355065b",
+            "path": "Assets/Siphon/Runtime/AssaultLayout.cs",
+            "fingerprint": "67cd02a48feeb1f115908076859d9b94d73cbbafde4bb07b8d4c966e6f8b3495"
+          }
+        ],
+        "completed": [
+          {
+            "item_id": "02ff77829ee993149ba5b9fb1fbb7d5679223b71ed80eb65e9f99812c491af74",
+            "path": "Assets/Siphon/Editor/CandidateIsolationValidation.cs",
+            "fingerprint": "91671ee42288c49b55b9149de3d2ae3f9dd3ea438468c8a8419f740095cc8008"
+          },
+          {
+            "item_id": "2dd5986177bb53fc5ee71c469e916d0c1a9f51b39521f6fef30a7dcce69905c8",
+            "path": "Assets/Siphon/Runtime/WarDirector.cs",
+            "fingerprint": "e4f12f808c60d8dfc624c10c0a6bdcb7b35aedd508cd1597948bcf94645c90eb"
+          },
+          {
+            "item_id": "2ed50ac91d97a4fcba69b791a747dae6ed161a6bb602d049b80eed9af4c9be67",
+            "path": "Assets/Siphon/Editor/NavigationBaker.cs",
+            "fingerprint": "6152bdd54e89b0755035c25f8196e3106337187984584818e9d82f6be2026ac4"
+          },
+          {
+            "item_id": "362c229e5aedacc609801d07744833e42d8624558e75cd9a7c3361b57a39b021",
+            "path": "Assets/Siphon/Editor/PrototypeArtifacts.cs",
+            "fingerprint": "18acedd595a1a3a4dbda8c79591ba4837e754bac7e3dfe8c71133d52aa737428"
+          },
+          {
+            "item_id": "550c1cce1a9b52e8e8286a98d19ae5eae7580789cad6370c9b741708e0403f9e",
+            "path": "Assets/Siphon/Runtime/FieldSaveSystem.cs",
+            "fingerprint": "5b73af17cd28be4fcd6a6dd0f10cb3cc628f07f76925df7d2421487a4e807323"
+          },
+          {
+            "item_id": "9db50bab1f721a5016bc2e150ace001a35e6c50027e74ce31b73cc2873b08f37",
+            "path": "Assets/Siphon/Editor/AssaultSceneBuilder.cs",
+            "fingerprint": "908e06b510ccbab9bc7928ca48ae7db638ce259e33681004396ba14aa7455e6d"
+          },
+          {
+            "item_id": "b17f45ee4e72a7042a689eee0d1f9d6266540a75425a8f50bff106bb3355065b",
+            "path": "Assets/Siphon/Runtime/AssaultLayout.cs",
+            "fingerprint": "67cd02a48feeb1f115908076859d9b94d73cbbafde4bb07b8d4c966e6f8b3495"
+          }
+        ],
+        "reused": [],
+        "failed": [],
+        "waived": [],
+        "excluded": [
+          {
+            "item_id": "101d7f14bcaf5006d10201c3aea137330af1df95a6cf84ca56acc02e919762ad",
+            "path": "docs/images/candidate600.png",
+            "exclude_reason": "binary"
+          },
+          {
+            "item_id": "16e035354f4bc60b2bd9dca674acff5fe7ad3fe13aa3364889e9d529ba2c5b66",
+            "path": "ROADMAP.md",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "1abc5a41fc6e64f175054b18678c8fe3f027845f1ef9ba0636e613d78e4e9c9a",
+            "path": "docs/maps/M01-CANDIDATE-CHECKS.md",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "32316889654082fc29433e8f13d2f8c74109537a71115e1a020335036f70eed6",
+            "path": "docs/briefings/LATEST.md",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "5003e35d499c3c1444d6eee651af100ff2ee6879825539149287aea435f20a79",
+            "path": "Assets/Siphon/Settings/Candidate600Navigation.asset.meta",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "534ab4b1ffd339810e27e1ec4b0b152e95b8f6ad25bf7e7bdc7d9c8bfbb6071c",
+            "path": "docs/agent/CURRENT-TASK.md",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "5513e08b2a7a2bd1474a6452d9bc1b53c9b16406f75a10e4eaf4d17e219a038c",
+            "path": "README.md",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "59f19da307e242314203461c83fe443e95f56ac7c734d1610ea67c174377c4bf",
+            "path": "Assets/Siphon/Editor/CandidateIsolationValidation.cs.meta",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "5da16ec7224c071530d6f6d364c677655512456c7c2bfd8842e8f637f06fa64e",
+            "path": "Assets/Siphon/Scenes/AssaultCandidate600.unity.meta",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "622ab5272aada81f10db7bc21d500ac2171e99c97a57d91cf1c34574e6221cdd",
+            "path": "Assets/Siphon/Meshes/Candidate600.asset.meta",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "659a9518fdce4a24f3004e33f7745f9d081d193164e78d4ae2ce05650fe5fa7f",
+            "path": "docs/maps/M01-CANDIDATE-BUILD.json",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "65e93362ed61f35f7462e568ec390b4da6ccd79f8b25c455168b440ec25312b5",
+            "path": "UPDATES.md",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "76434244abb50f4a338b6db373c94257e498d8e518da4f5e8a348f73118d0b01",
+            "path": "docs/agent/STATE.md",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "80415d43072bd84ec3421b73c5b0f36812688928b527c59c48cb1a8c0fae066a",
+            "path": "Assets/Siphon/Settings/Candidate600Navigation.asset",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "8b832b202b88d5c7a66b1ecebbf900007ab4b42a40bb3109fc1ad64a09623117",
+            "path": "Assets/Siphon/Scenes/AssaultCandidate600.unity",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "b0c55105776d93c7f4843b80797f073c8741eb276831a50fbca672a43db56d35",
+            "path": "docs/briefings/2026-11-15-candidate.md",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "d3a2a0afac7239cfaf6a9981dc136222c958b02c1398c33103c9c7f23fd38919",
+            "path": "docs/maps/M01-PLAN.md",
+            "exclude_reason": "user_exclude"
+          },
+          {
+            "item_id": "f822e335590e535ebc1199d34a786ccdfeafa1e33a13aa7d3cb62e706c05aac7",
+            "path": "Assets/Siphon/Meshes/Candidate600.asset",
+            "exclude_reason": "user_exclude"
+          }
+        ]
+      },
+      "elapsed_ms": 96394
+    }
+  },
+  "comments": [
+    {
+      "url": "https://api.github.com/repos/Jbudone/siphon/issues/comments/6904905146",
+      "html_url": "https://github.com/Jbudone/siphon/pull/3#issuecomment-6904905146",
+      "issue_url": "https://api.github.com/repos/Jbudone/siphon/issues/3",
+      "id": 6904905146,
+      "node_id": "IC_kwDOVvv21M8AAAABm5B9ug",
+      "user": {
+        "login": "github-actions[bot]",
+        "id": 41898282,
+        "node_id": "MDM6Qm90NDE4OTgyODI=",
+        "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/github-actions%5Bbot%5D",
+        "html_url": "https://github.com/apps/github-actions",
+        "followers_url": "https://api.github.com/users/github-actions%5Bbot%5D/followers",
+        "following_url": "https://api.github.com/users/github-actions%5Bbot%5D/following{/other_user}",
+        "gists_url": "https://api.github.com/users/github-actions%5Bbot%5D/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/github-actions%5Bbot%5D/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/github-actions%5Bbot%5D/subscriptions",
+        "organizations_url": "https://api.github.com/users/github-actions%5Bbot%5D/orgs",
+        "repos_url": "https://api.github.com/users/github-actions%5Bbot%5D/repos",
+        "events_url": "https://api.github.com/users/github-actions%5Bbot%5D/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/github-actions%5Bbot%5D/received_events",
+        "type": "Bot",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "created_at": "2026-11-16T01:36:05Z",
+      "updated_at": "2026-11-16T01:36:05Z",
+      "body": "## PR Reviewer Guide \ud83d\udd0d\n\n<!-- pr-agent:review:full -->\n\nHere are some key observations to aid the review process:\n\n<table>\n<tr><td>\u23f1\ufe0f&nbsp;<strong>Estimated effort to review</strong>: 4 \ud83d\udd35\ud83d\udd35\ud83d\udd35\ud83d\udd35\u26aa</td></tr>\n<tr><td>\ud83e\uddea&nbsp;<strong>PR contains tests</strong></td></tr>\n<tr><td>\ud83d\udd12&nbsp;<strong>No security concerns identified</strong></td></tr>\n<tr><td>\u26a1&nbsp;<strong>No major issues detected</strong></td></tr>\n</table>\n",
+      "author_association": "NONE",
+      "reactions": {
+        "url": "https://api.github.com/repos/Jbudone/siphon/issues/comments/6904905146/reactions",
+        "total_count": 0,
+        "+1": 0,
+        "-1": 0,
+        "laugh": 0,
+        "hooray": 0,
+        "confused": 0,
+        "heart": 0,
+        "rocket": 0,
+        "eyes": 0
+      },
+      "performed_via_github_app": {
+        "id": 15368,
+        "client_id": "Iv1.05c79e9ad1f6bdfa",
+        "slug": "github-actions",
+        "node_id": "MDM6QXBwMTUzNjg=",
+        "owner": {
+          "login": "github",
+          "id": 9919,
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/github",
+          "html_url": "https://github.com/github",
+          "followers_url": "https://api.github.com/users/github/followers",
+          "following_url": "https://api.github.com/users/github/following{/other_user}",
+          "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+          "organizations_url": "https://api.github.com/users/github/orgs",
+          "repos_url": "https://api.github.com/users/github/repos",
+          "events_url": "https://api.github.com/users/github/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/github/received_events",
+          "type": "Organization",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "name": "GitHub Actions",
+        "description": "Automate your workflow from idea to production",
+        "external_url": "https://help.github.com/en/actions",
+        "html_url": "https://github.com/apps/github-actions",
+        "created_at": "2018-07-30T09:30:17Z",
+        "updated_at": "2026-06-18T16:17:48Z",
+        "permissions": {
+          "actions": "write",
+          "administration": "read",
+          "artifact_metadata": "write",
+          "attestations": "write",
+          "checks": "write",
+          "code_quality": "write",
+          "contents": "write",
+          "copilot_requests": "write",
+          "deployments": "write",
+          "discussions": "write",
+          "drives": "write",
+          "issues": "write",
+          "merge_queues": "write",
+          "metadata": "read",
+          "models": "read",
+          "packages": "write",
+          "pages": "write",
+          "pull_requests": "write",
+          "repository_hooks": "write",
+          "repository_projects": "write",
+          "security_events": "write",
+          "statuses": "write",
+          "vulnerability_alerts": "read"
+        },
+        "events": [
+          "branch_protection_rule",
+          "check_run",
+          "check_suite",
+          "create",
+          "delete",
+          "deployment",
+          "deployment_status",
+          "discussion",
+          "discussion_comment",
+          "fork",
+          "gollum",
+          "issues",
+          "issue_comment",
+          "label",
+          "merge_group",
+          "milestone",
+          "page_build",
+          "public",
+          "pull_request",
+          "pull_request_review",
+          "pull_request_review_comment",
+          "push",
+          "registry_package",
+          "release",
+          "repository",
+          "repository_dispatch",
+          "status",
+          "watch",
+          "workflow_dispatch",
+          "workflow_run"
+        ]
+      },
+      "minimized": null
+    },
+    {
+      "url": "https://api.github.com/repos/Jbudone/siphon/issues/comments/6904913018",
+      "html_url": "https://github.com/Jbudone/siphon/pull/3#issuecomment-6904913018",
+      "issue_url": "https://api.github.com/repos/Jbudone/siphon/issues/3",
+      "id": 6904913018,
+      "node_id": "IC_kwDOVvv21M8AAAABm5Cceg",
+      "user": {
+        "login": "github-actions[bot]",
+        "id": 41898282,
+        "node_id": "MDM6Qm90NDE4OTgyODI=",
+        "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/github-actions%5Bbot%5D",
+        "html_url": "https://github.com/apps/github-actions",
+        "followers_url": "https://api.github.com/users/github-actions%5Bbot%5D/followers",
+        "following_url": "https://api.github.com/users/github-actions%5Bbot%5D/following{/other_user}",
+        "gists_url": "https://api.github.com/users/github-actions%5Bbot%5D/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/github-actions%5Bbot%5D/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/github-actions%5Bbot%5D/subscriptions",
+        "organizations_url": "https://api.github.com/users/github-actions%5Bbot%5D/orgs",
+        "repos_url": "https://api.github.com/users/github-actions%5Bbot%5D/repos",
+        "events_url": "https://api.github.com/users/github-actions%5Bbot%5D/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/github-actions%5Bbot%5D/received_events",
+        "type": "Bot",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "created_at": "2026-11-16T01:36:38Z",
+      "updated_at": "2026-11-16T01:36:38Z",
+      "body": "<!-- ocr-summary -->\n\u2705 **OpenCodeReview**: Review complete: 0 finding(s) across 7 selected item(s).",
+      "author_association": "NONE",
+      "reactions": {
+        "url": "https://api.github.com/repos/Jbudone/siphon/issues/comments/6904913018/reactions",
+        "total_count": 0,
+        "+1": 0,
+        "-1": 0,
+        "laugh": 0,
+        "hooray": 0,
+        "confused": 0,
+        "heart": 0,
+        "rocket": 0,
+        "eyes": 0
+      },
+      "performed_via_github_app": {
+        "id": 15368,
+        "client_id": "Iv1.05c79e9ad1f6bdfa",
+        "slug": "github-actions",
+        "node_id": "MDM6QXBwMTUzNjg=",
+        "owner": {
+          "login": "github",
+          "id": 9919,
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/github",
+          "html_url": "https://github.com/github",
+          "followers_url": "https://api.github.com/users/github/followers",
+          "following_url": "https://api.github.com/users/github/following{/other_user}",
+          "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+          "organizations_url": "https://api.github.com/users/github/orgs",
+          "repos_url": "https://api.github.com/users/github/repos",
+          "events_url": "https://api.github.com/users/github/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/github/received_events",
+          "type": "Organization",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "name": "GitHub Actions",
+        "description": "Automate your workflow from idea to production",
+        "external_url": "https://help.github.com/en/actions",
+        "html_url": "https://github.com/apps/github-actions",
+        "created_at": "2018-07-30T09:30:17Z",
+        "updated_at": "2026-06-18T16:17:48Z",
+        "permissions": {
+          "actions": "write",
+          "administration": "read",
+          "artifact_metadata": "write",
+          "attestations": "write",
+          "checks": "write",
+          "code_quality": "write",
+          "contents": "write",
+          "copilot_requests": "write",
+          "deployments": "write",
+          "discussions": "write",
+          "drives": "write",
+          "issues": "write",
+          "merge_queues": "write",
+          "metadata": "read",
+          "models": "read",
+          "packages": "write",
+          "pages": "write",
+          "pull_requests": "write",
+          "repository_hooks": "write",
+          "repository_projects": "write",
+          "security_events": "write",
+          "statuses": "write",
+          "vulnerability_alerts": "read"
+        },
+        "events": [
+          "branch_protection_rule",
+          "check_run",
+          "check_suite",
+          "create",
+          "delete",
+          "deployment",
+          "deployment_status",
+          "discussion",
+          "discussion_comment",
+          "fork",
+          "gollum",
+          "issues",
+          "issue_comment",
+          "label",
+          "merge_group",
+          "milestone",
+          "page_build",
+          "public",
+          "pull_request",
+          "pull_request_review",
+          "pull_request_review_comment",
+          "push",
+          "registry_package",
+          "release",
+          "repository",
+          "repository_dispatch",
+          "status",
+          "watch",
+          "workflow_dispatch",
+          "workflow_run"
+        ]
+      },
+      "minimized": null
+    }
+  ],
+  "run_metadata": {
+    "ocr": {
+      "conclusion": "success",
+      "createdAt": "2026-11-16T01:34:47Z",
+      "headSha": "0cdbbe66606d80ae88998ed56b38c11daacd48b2",
+      "jobs": [
+        {
+          "completedAt": "2026-11-16T01:36:43Z",
+          "conclusion": "success",
+          "databaseId": 133037020441,
+          "name": "review",
+          "startedAt": "2026-11-16T01:34:50Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-11-16T01:34:54Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-11-16T01:34:52Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-16T01:36:39Z",
+              "conclusion": "success",
+              "name": "Review through Alibaba Open Code Review",
+              "number": 2,
+              "startedAt": "2026-11-16T01:34:54Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-16T01:36:40Z",
+              "conclusion": "success",
+              "name": "Retain Open Code Review audit reports",
+              "number": 3,
+              "startedAt": "2026-11-16T01:36:39Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-16T01:36:40Z",
+              "conclusion": "success",
+              "name": "Verify selected review coverage completed",
+              "number": 4,
+              "startedAt": "2026-11-16T01:36:40Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-16T01:36:40Z",
+              "conclusion": "success",
+              "name": "Post Review through Alibaba Open Code Review",
+              "number": 8,
+              "startedAt": "2026-11-16T01:36:40Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-16T01:36:40Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 9,
+              "startedAt": "2026-11-16T01:36:40Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jbudone/siphon/actions/runs/43787081123/job/133037020441"
+        }
+      ],
+      "status": "completed",
+      "updatedAt": "2026-11-16T01:36:44Z",
+      "url": "https://github.com/Jbudone/siphon/actions/runs/43787081123"
+    },
+    "pr-agent": {
+      "conclusion": "success",
+      "createdAt": "2026-11-16T01:34:47Z",
+      "headSha": "0cdbbe66606d80ae88998ed56b38c11daacd48b2",
+      "jobs": [
+        {
+          "completedAt": "2026-11-16T01:36:08Z",
+          "conclusion": "success",
+          "databaseId": 133037020082,
+          "name": "review",
+          "startedAt": "2026-11-16T01:34:50Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-11-16T01:34:52Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-11-16T01:34:51Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-16T01:35:08Z",
+              "conclusion": "success",
+              "name": "Build The-PR-Agent/pr-agent@a76cb9111b6a944094e874b3d467c4e546946e7b",
+              "number": 2,
+              "startedAt": "2026-11-16T01:34:52Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-16T01:36:06Z",
+              "conclusion": "success",
+              "name": "Review through PR-Agent",
+              "number": 3,
+              "startedAt": "2026-11-16T01:35:08Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-11-16T01:36:06Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 4,
+              "startedAt": "2026-11-16T01:36:06Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jbudone/siphon/actions/runs/43787081142/job/133037020082"
+        }
+      ],
+      "status": "completed",
+      "updatedAt": "2026-11-16T01:36:09Z",
+      "url": "https://github.com/Jbudone/siphon/actions/runs/43787081142"
+    }
+  },
+  "equal_coverage_proven": false,
+  "pr_agent_observed_runtime_digest": "sha256:548e894a88071180832b2f4233f734d0acd0db1a879e2fcbaa70bac8b8372ebe"
+}
