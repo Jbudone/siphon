@@ -52,11 +52,13 @@ namespace Siphon.Editor
         public static void BuildLinux() => BuildLinuxTo("Builds/Siphon");
         // Stage a reviewable build without replacing files used by a running playtest.
         public static void BuildLinuxCandidate() => BuildLinuxTo("Builds/SiphonCandidate");
-        private static void BuildLinuxTo(string output)
+        [MenuItem("Siphon/Build isolated 600m candidate Linux")]
+        public static void BuildLinuxMapCandidate() => BuildLinuxTo("Builds/SiphonMapCandidate600", AssaultSceneBuilder.CandidateScenePath);
+        private static void BuildLinuxTo(string output, string scenePath = AssaultSceneBuilder.ScenePath)
         {
             Directory.CreateDirectory(output);
             var result = BuildPipeline.BuildPlayer(new BuildPlayerOptions {
-                scenes = new[] { AssaultSceneBuilder.ScenePath, "Assets/Siphon/Scenes/MovementPlayground.unity" },
+                scenes = new[] { scenePath, "Assets/Siphon/Scenes/MovementPlayground.unity" },
                 locationPathName = Path.Combine(output, "Siphon.x86_64"),
                 target = BuildTarget.StandaloneLinux64,
                 options = BuildOptions.Development

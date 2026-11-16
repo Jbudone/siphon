@@ -1,0 +1,54 @@
+{
+  "source_base_revision": "b6f71c1a7ac9bc15b2f0ade317b11d6e4299b3ce",
+  "source_scope": "base plus candidate isolation slice; named hashes identify tested source and generated inputs",
+  "unity": "6000.6.0f1",
+  "build_method": "Siphon.Editor.PrototypeArtifacts.BuildLinuxMapCandidate",
+  "candidate_path": "Builds/SiphonMapCandidate600/Siphon.x86_64",
+  "layout_id": "assault-candidate600-v1",
+  "size_m": 600,
+  "sha256": {
+    "Assets/Siphon/Runtime/AssaultLayout.cs": "5e1763bf1d7ddc66bada2da1c4df7e9f3990f6c102a39f5652390ed4a9e8c3fa",
+    "Assets/Siphon/Runtime/FieldSaveSystem.cs": "d45f1bb23103ed858fc01cc390aef88de621aed82037ba69c89243eb5045c918",
+    "Assets/Siphon/Runtime/WarDirector.cs": "959c0b9fca16cdd8bfda7e4f280d88344e1977b54214141242fc6ed994bd6b95",
+    "Assets/Siphon/Editor/AssaultSceneBuilder.cs": "bcb1a65d128280fcbbf1c45989e1526c666966c8b413ff1b089c7c805aaa0f9d",
+    "Assets/Siphon/Editor/NavigationBaker.cs": "c2a33ab0b8f581047194a1fc0fde7ce7625c7b00b50fa6f572dbbfc0a8d15e8c",
+    "Assets/Siphon/Editor/PrototypeArtifacts.cs": "f8232091da718dcb8b042c648bfe6190ec9ac0cbda58d5afb4c72d142c439867",
+    "Assets/Siphon/Editor/CandidateIsolationValidation.cs": "8946065221bdd7c6ecad2de774f1ec1629860308f7d48fe3b9f8d13bc34afd59",
+    "Assets/Siphon/Scenes/AssaultCandidate600.unity": "7d2ead2828943dd95ac09d2feddf56f0181f2934ab8a5384989c3e149aaded41",
+    "Assets/Siphon/Meshes/Candidate600.asset": "a2f3ff584dada9c99ff4cb83bc2db4d56f1bac8198313ac076beca0367d4b0c1",
+    "Assets/Siphon/Settings/Candidate600Navigation.asset": "8eba582f9efc9d16d5315bdf68c6bbe5100be2e8e65bef7c248a45a9d013be73",
+    "Assets/Siphon/Scenes/AssaultPlayground.unity": "6b5d2c97de68683a4bd18b0c27bfcc64f363cca165ee7571b2514021fce53169",
+    "Assets/Siphon/Meshes/Field.asset": "32c6dbb3383c2ba6462a0bd5effcfdb2ee38c54f32ad473b510626486fdcaf8c",
+    "Assets/Siphon/Settings/FieldNavigation.asset": "37f91514e69376e0de3ac5b951a0cac0f09bdd9afbf358236ed715fc17c15f68",
+    "Assets/Siphon/Scenes/MovementPlayground.unity": "eb6d493db99e4b2b68398963e0ef942ec16b855c2d9629d2f3f42c19e377e3c1",
+    "Assets/Siphon/Settings/Movement.asset": "7d6b83e20c28795500b592dcb3463d55742d665f9ff4bf0f5474c82579567d70",
+    "Assets/Siphon/Art/PulseRifle/PulseRifle.prefab": "dad7b586f11aecfcbd44813dc0fbca8bf17c78ad8fda8f377762ecef179dd62e"
+  },
+  "built_outputs_sha256": {
+    "Builds/SiphonMapCandidate600/Siphon.x86_64": "de3009bc2c3a8a7c25f347c0c0a098a1c49dbbb6ee6ec100562e61fb50cae261",
+    "Builds/SiphonMapCandidate600/Siphon_Data/Managed/Assembly-CSharp.dll": "95a4ecbc7a55824f168f786e1dce482807ba7a27c965b175839f9750a22ac131",
+    "Builds/SiphonMapCandidate600/Siphon_Data/level0": "c34bf8684330ad0184e6f2600192294cdbb78ff97776f12ce838712f7fb144a2"
+  },
+  "accepted_baseline_before_sha256": {
+    "Assets/Siphon/Scenes/AssaultPlayground.unity": "6b5d2c97de68683a4bd18b0c27bfcc64f363cca165ee7571b2514021fce53169",
+    "Assets/Siphon/Meshes/Field.asset": "32c6dbb3383c2ba6462a0bd5effcfdb2ee38c54f32ad473b510626486fdcaf8c",
+    "Assets/Siphon/Settings/FieldNavigation.asset": "37f91514e69376e0de3ac5b951a0cac0f09bdd9afbf358236ed715fc17c15f68",
+    "Assets/Siphon/Scenes/MovementPlayground.unity": "eb6d493db99e4b2b68398963e0ef942ec16b855c2d9629d2f3f42c19e377e3c1",
+    "Assets/Siphon/Settings/Movement.asset": "7d6b83e20c28795500b592dcb3463d55742d665f9ff4bf0f5474c82579567d70",
+    "Assets/Siphon/Art/PulseRifle/PulseRifle.prefab": "dad7b586f11aecfcbd44813dc0fbca8bf17c78ad8fda8f377762ecef179dd62e"
+  },
+  "limits": "Selected input/output hashes, not full build directory manifest. This is 600m isolation, no 2km route or performance claim.",
+  "screenshot_sha256": {
+    "docs/images/candidate600.png": "333e6b5de5ac416cd6f3234654a1e43d83916b3639151e5dd32e5d2bfd784acb"
+  },
+  "verification": {
+    "candidate_generation_and_persistence": "exit 0 initially; final reload3 exit 0 after fixing validator compile error and incorrect index assertion",
+    "default_FieldValidation": "exit 0 before editor reload fix; no later gameplay logic change",
+    "candidate_build": "exit 0",
+    "batch_smoke": "exit 0; 25s,19 bots,4 deliveries,161 nav searches/0 failures; screenshot black and discarded",
+    "rendered_smoke": "exit 0;25s,19 bots,4 deliveries,153 nav searches/0 failures;weapon selection/firing/recoil passed; screenshot visually inspected",
+    "renderer": "xvfb, llvmpipe LLVM23.1.3; not performance representative",
+    "independent_review": "initial separate Sol reviewer identified excluded-scene reload risk; uninvolved separate Sol follow-up reviewed fix; no outstanding actionable findings",
+    "hosted_review": "pending PR"
+  }
+}

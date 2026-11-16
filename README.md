@@ -76,6 +76,19 @@ The validators exit Unity themselves: omit `-quit`. Run these commands sequentia
 "$UNITY" -batchmode -nographics -projectPath "$PWD" -executeMethod Siphon.Editor.PrototypeArtifacts.BuildLinux -quit -logFile /tmp/siphon-linux-build.log
 ```
 
+## Isolated map candidate
+
+The opt-in candidate is a separate **600m clone**, ready for a later terrain experiment. It uses `AssaultCandidate600.unity`, `Candidate600.asset`, `Candidate600Navigation.asset`, and save identity `assault-candidate600-v1`. It does not expand the playable area. Default scene, generated assets, build paths and the movement lab retain their existing destinations.
+
+```sh
+"$UNITY" -batchmode -nographics -projectPath "$PWD" -executeMethod Siphon.Editor.CandidateIsolationValidation.Run -logFile /tmp/siphon-candidate-isolation.log
+"$UNITY" -batchmode -nographics -projectPath "$PWD" -executeMethod Siphon.Editor.PrototypeArtifacts.BuildLinuxMapCandidate -quit -logFile /tmp/siphon-map-candidate-build.log
+```
+
+The first command regenerates only the candidate and exits after source-byte, reference and persistence checks; omit `-quit`. To regenerate without validation, use `AssaultSceneBuilder.BuildCandidate` with `-quit`, or **Siphon > Generate isolated 600m candidate**. The build opens the candidate first and retains the lab as its second scene, at `Builds/SiphonMapCandidate600/Siphon.x86_64`.
+
+Checkpoint schema v4 records layout identity. Legacy saves without identity remain readable on the default map. Candidate saves use `field-war-candidate600-v1.json` alongside the unchanged default `field-war-v1.json` in Unity's persistent data directory; cross-layout restores are rejected. Changed candidate geometry must receive a new identity and save destination.
+
 ## Scope and next steps
 
 This is a local field test with fourteen team bots, five creatures, and one Warden. Bots follow baked terrain paths and update navigation around built or destroyed structures, with local steering and separation. The captain still uses a small rule-based set of priorities; this is not the final squad AI or a large-language-model runtime. Main enemy bases are known strategic objectives.

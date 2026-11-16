@@ -42,7 +42,7 @@ Source scope: `Assets/Siphon/Editor/{AssaultSceneBuilder,NavigationBaker}.cs`, `
 - Retaining 4m navigation spacing gives 501² = 251,001 nodes, approximately 11.01 times today's count. Keep resolution initially so clearance semantics remain comparable; benchmark before considering coarser or hierarchical navigation. No capacity or frame-rate claim follows from these counts.
 - Straight-line 1km travel estimates: 62.5s at the accepted 16m/s ground speed, 11.76s at the 85m/s speed cap; bots roughly 143s heavy (7m/s), 91s worker (11m/s), 59s scout (17m/s), before acceleration, terrain, detours or combat. The speed cap is not a sustained route speed. Measure outbound and return runs with ordinary equipment before accepting the gap.
 
-## Next implementation slice: shared layout contract at 600m
+## Completed foundation: shared layout contract at 600m
 
 Keep this smaller than building the new terrain. Add one explicit assault-layout definition containing extent, safe inset(s), navigation spacing, base/spawn and camp anchors, with the present layout as default. Feed builder, baker, bot bounds, target validation, HUD projection and save player bounds from it. Retain today's distinct 5m recovery/target and 10m save insets. Scope a worker to the new definition plus these consumers; do not retune movement/combat or change map size. Resolve how runtime consumers obtain the definition without a scene singleton dependency in the movement lab. Defer save-schema changes and new terrain to the following candidate slice.
 
@@ -53,7 +53,7 @@ Acceptance for that implementation:
 3. Boundary checks preserve current inclusive thresholds: bot/mark at 295 versus just beyond, save restore at 290 versus just beyond; HUD corners map correctly. Legacy saves and the independent movement lab still load. Use targeted engine assertions for these behaviors, not only constant comparisons.
 4. Run relevant existing navigation, persistence and scene integration checks plus an actual candidate smoke; record commands, fresh results and build inputs. Check README's current entry points before selecting validators. Do not call this slice a 2km map or reuse A01's results as new evidence.
 
-Following slice: create opt-in large-map scene and distinct mesh/navigation/save destinations; audit bot objectives/respawn selection, then implement terrain and placement. Its acceptance must include edge/collider seams, both-direction base/flank/outpost route completion, failure/recovery counts, elapsed travel, and representative navigation/frame timings on named hardware. Capture the actual candidate, retaining the 600m baseline and movement lab. Final dimensions and budgets remain open until these measurements exist.
+Current slice: create opt-in candidate scene and distinct mesh/navigation/save destinations while retaining 600m geometry. Verify legacy default saves and cross-layout rejection before changing terrain. Following slice: expand the isolated candidate; audit bot objectives/respawn selection, then implement terrain and placement. Its acceptance must include edge/collider seams, both-direction base/flank/outpost route completion, failure/recovery counts, elapsed travel, and representative navigation/frame timings on named hardware. Capture the actual candidate, retaining the 600m baseline and movement lab. Final dimensions and budgets remain open until these measurements exist.
 
 ## Checks and limits of this planning slice
 

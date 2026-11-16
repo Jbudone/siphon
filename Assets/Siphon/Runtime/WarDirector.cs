@@ -8,6 +8,9 @@ namespace Siphon
     public sealed class WarDirector : MonoBehaviour
     {
         public static WarDirector Instance { get; private set; }
+        // Empty in old scenes: resolve to the accepted default without scene-global caching.
+        public string layoutId;
+        public AssaultLayout Layout => AssaultLayout.Resolve(layoutId);
         public Combatant blueCore;
         public Combatant redCore;
         public Vector3 blueSpawn;
@@ -294,7 +297,7 @@ namespace Siphon
         public void RestoreOutcome(bool finished, Team winner) { Finished = finished; Winner = winner; }
         public bool MarkTarget(Vector3 point, Combatant seen = null)
         {
-            if (Finished || !Finite(point) || AssaultLayout.Default.Outside(point, AssaultLayout.Default.RecoveryInset)) return false;
+            if (Finished || !Finite(point) || Layout.Outside(point, Layout.RecoveryInset)) return false;
             RallyPoint = point; RallyUntil = Time.time + 45;
             rallyEnemyCore = seen != null && seen.team == Team.Red && seen.kind == EntityKind.Core;
             RallyLabel = seen != null ? ActorName(seen) : "FIELD POSITION";
@@ -316,7 +319,21 @@ namespace Siphon
         public Vector3 SiegeAimPoint => rallyEnemyCore && redCore != null && redCore.Shielded ? AssaultPoint(Team.Blue, false) + Vector3.up * 1.3f : RallyPoint;
         private static bool Finite(Vector3 value) => !float.IsNaN(value.x) && !float.IsNaN(value.y) && !float.IsNaN(value.z)
             && !float.IsInfinity(value.x) && !float.IsInfinity(value.y) && !float.IsInfinity(value.z);
-        public void Restart() { FieldSaveSystem.FreshWar = true; SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); }
+        public void Restart() { FieldSaveSystem.FreshWar = true; ReloadActiveScene(); }
+        public static void ReloadActiveScene()
+        {
+            var scene = SceneManager.GetActiveScene();
+#if UNITY_EDITOR
+            // Opt-in scenes need not be listed in the default player build settings.
+            if (Application.isEditor)
+            {
+                UnityEditor.SceneManagement.EditorSceneManager.LoadSceneInPlayMode(scene.path,
+                    new LoadSceneParameters(LoadSceneMode.Single));
+                return;
+            }
+#endif
+            SceneManager.LoadScene(scene.buildIndex);
+        }
         public void CycleOrder()
         {
             BlueOrder = (CaptainOrder)(((int)BlueOrder + 1) % 4);

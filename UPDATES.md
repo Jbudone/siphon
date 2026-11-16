@@ -4,9 +4,9 @@ Screenshots, showcases and concise briefings live here in the repository so they
 
 [Roadmap](ROADMAP.md) · [Latest briefing](docs/briefings/LATEST.md) · [Development workflow](docs/WORKFLOW.md)
 
-## Latest development — map layout foundation
+## Latest development — isolated map candidate
 
-The 600m map now shares its size, anchors and bounds across terrain, navigation, HUD and save recovery. This prepares the proposed larger map; the playable area has not expanded. [Briefing](docs/briefings/2026-11-15-layout.md) · [Terrain dependency audit](docs/maps/M01-PLAN.md)
+The terrain experiment now has separate scene, mesh/navigation, Linux build and save destinations. It remains a 600m clone; generation/persistence/reload checks and an actual-player smoke passed. [Briefing and screenshot](docs/briefings/2026-11-15-candidate.md) · [Build provenance](docs/maps/M01-CANDIDATE-BUILD.json)
 
 ## Latest playable showcase — first generated pulse rifle
 
@@ -33,6 +33,7 @@ Switching to the disc keeps its current placeholder while the new rifle is hidde
 
 | Update | What changed | Evidence |
 | --- | --- | --- |
+| [2026-11-15 — Isolated map candidate](docs/briefings/2026-11-15-candidate.md) | Separate experiment assets/saves, legacy compatibility and editor reload | Targeted checks, default field validation, Linux build and rendered smoke passed |
 | [2026-11-15 — Paired review-tool trial](docs/reviews/README.md) | PR-Agent and Alibaba OpenCodeReview; separate outputs for later audit | Hosted trial evidence and coverage limits; no gameplay change |
 | [2026-11-15 — Map layout foundation](docs/briefings/2026-11-15-layout.md) | Shared current layout and GitHub update pages; larger map still planned | Generation/runtime/field checks and new candidate smoke passed |
 | [2026-11-15 — First generated rifle](docs/briefings/2026-11-15-rifle.md) | First-person model, URP materials, persistent prefab; Stalker initialization and validator fixes | Actual-build screenshots and passing checks |
@@ -41,4 +42,4 @@ Switching to the disc keeps its current placeholder while the new rifle is hidde
 
 ## Next
 
-Terrain planning for the provisional 2km × 2km map. Plans and calculations are not screenshots or performance measurements of a larger playable build. See the roadmap for current status.
+Expand the isolated experiment toward the provisional 2km × 2km map. Plans and calculations are not screenshots or performance measurements of a larger playable build. See the roadmap for current status.
