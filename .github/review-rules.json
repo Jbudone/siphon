@@ -1,0 +1,20 @@
+{
+  "exclude": [
+    "**/*.md",
+    "docs/**",
+    "artifacts/**",
+    "Library/**",
+    "Builds/**",
+    "Logs/**",
+    "Backups/**",
+    "**/*.{unity,prefab,asset,meta,mat,anim,controller,overrideController,renderTexture,lighting,terrainlayer}",
+    "**/*.{png,jpg,jpeg,gif,webp,svg,ico,psd,tga,exr,hdr,fbx,obj,blend,glb,gltf,bin,mesh,wav,mp3,ogg,mp4,zip,pdf,dll,so,dylib,exe}"
+  ],
+  "rules": [
+    {
+      "path": "**",
+      "merge_system_rule": true,
+      "rule": "Siphon is a Unity fast-movement team shooter. Report only concrete correctness bugs introduced by this diff, with a reproducible failure scenario and precise code location. Focus on broken Unity references, movement/combat regressions, save compatibility, resource accounting, bot navigation/sensing, and duplicate paid generation requests. Prefer at most five findings for the entire review; do not pad the result with style, documentation, speculative risks, or accepted gameplay tuning changes. Distinguish observed evidence from unverified claims. Review is advisory: do not edit files, apply fixes, approve, merge, or resolve review threads."
+    }
+  ]
+}

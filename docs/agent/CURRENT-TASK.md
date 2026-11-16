@@ -1,4 +1,13 @@
-# M01 — 600m layout foundation complete; expansion next
+# W03 — paired hosted review trial
+
+Status: In progress at user request 2026-11-15. Configure and actually try both PR-Agent and Alibaba OpenCodeReview, retain separately identified results so the user can audit later. Root configured Actions OPENROUTER_API_KEY from the existing local direnv key; its value was never printed. Fresh Sol/medium worker dual_review_setup owns workflow/config changes. Root owns docs/PR execution and integration; independent reviewer follows. No gameplay changes.
+
+Preserve user-modified `.envrc` and pre-existing `.vscode/`; never stage them. Initial model for both tools: `anthropic/claude-sonnet-5.5` through OpenRouter. Pin OCR action/runtime and record PR-Agent runtime caveat. Run on the same PR revisions; full-range reviews and separate comments/artifacts. Hosted run status is not a quality score. No Langfuse installation or automatic judging. See [trial record](../reviews/README.md).
+
+Root plan: validate config with separate reviewer, publish workflows, then open an explicitly labeled historical replay PR for the real 600m layout changes (base 1cc509d) so both tools see code rather than a documentation-only setup diff. Record exact base/head/run URLs, observed outputs and limitations. Do not merge the replay PR into the old baseline. Paid review usage is implied by the requested trial; no paid asset generation.
+
+## Previous M01 evidence
+
 
 Completed slice 2026-11-15. Fresh Sol/medium `terrain_audit` wrote [dependency plan](../maps/M01-PLAN.md); fresh Sol/medium `layout_contract` implemented bounded code; fresh separate Sol/medium `layout_review` found no actionable correctness findings. Root integrated and ran sequential engine checks. No paid jobs.
 

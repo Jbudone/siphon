@@ -6,6 +6,23 @@ max_model_tokens = 16000
 restricted_mode = true
 enable_auto_approval = false
 
+[ignore]
+# Keep source coverage close to Open Code Review. PR-Agent uses fnmatch;
+# brace alternatives from review-rules.json must be separate patterns here.
+glob = [
+  "**/*.md", "docs/**", "artifacts/**", "Library/**", "Builds/**",
+  "Logs/**", "Backups/**",
+  "**/*.unity", "**/*.prefab", "**/*.asset", "**/*.meta", "**/*.mat",
+  "**/*.anim", "**/*.controller", "**/*.overrideController",
+  "**/*.renderTexture", "**/*.lighting", "**/*.terrainlayer",
+  "**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.gif", "**/*.webp",
+  "**/*.svg", "**/*.ico", "**/*.psd", "**/*.tga", "**/*.exr",
+  "**/*.hdr", "**/*.fbx", "**/*.obj", "**/*.blend", "**/*.glb",
+  "**/*.gltf", "**/*.bin", "**/*.mesh", "**/*.wav", "**/*.mp3",
+  "**/*.ogg", "**/*.mp4", "**/*.zip", "**/*.pdf", "**/*.dll",
+  "**/*.so", "**/*.dylib", "**/*.exe",
+]
+
 [github_action_config]
 # The synchronize event uses push_commands, not AUTO_REVIEW.
 handle_push_trigger = true

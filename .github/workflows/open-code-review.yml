@@ -1,0 +1,52 @@
+name: Open Code Review
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+permissions:
+  contents: read
+  pull-requests: write
+concurrency:
+  group: open-code-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  review:
+    if: "!github.event.pull_request.draft && github.event.pull_request.head.repo.full_name == github.repository"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Review through Alibaba Open Code Review
+        uses: alibaba/open-code-review@7e5ce06c88de5ce81df5dc4f24e2e485b517fae8 # v1.13.10
+        with:
+          ocr_version: '1.13.10'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          llm_url: https://openrouter.ai/api/v1/chat/completions
+          llm_auth_token: ${{ secrets.OPENROUTER_API_KEY }}
+          llm_model: anthropic/claude-sonnet-5.5
+          llm_protocol: openai
+          llm_use_anthropic: 'false'
+          llm_extra_body: '{}'
+          language: English
+          review_concurrency: '1'
+          effort: medium
+          # Aggregate usage guard; final rounds can exceed it. Not a dollar cap.
+          max_tokens_budget: '100000'
+          review_task_timeout: '10'
+          llm_timeout: '180'
+          rule: .github/review-rules.json
+          # Review the complete merge-base range on every push, as PR-Agent does.
+          checkpoint_range: 'false'
+          incremental: 'false'
+          sticky_summary: 'true'
+          resolve_outdated: 'false'
+          # Upload below to give audit reports an explicit retention period.
+          upload_artifacts: 'false'
+      - name: Retain Open Code Review audit reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: open-code-review-pr-${{ github.event.pull_request.number }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            /tmp/ocr-result.json
+            /tmp/ocr-stderr.log
+          if-no-files-found: warn
+          retention-days: 90
