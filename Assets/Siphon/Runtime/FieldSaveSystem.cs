@@ -3,20 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Siphon
 {
     public sealed class FieldSaveSystem : MonoBehaviour
     {
         public static bool FreshWar;
-        private static bool pendingLoad;
+        private static string pendingLoadLayout;
         private static bool Smoke => Array.IndexOf(Environment.GetCommandLineArgs(), "-siphon-smoke") >= 0;
-        public static string SavePath => Path.Combine(Application.persistentDataPath, "field-war-v1.json");
+        private static AssaultLayout CurrentLayout => WarDirector.Instance != null ? WarDirector.Instance.Layout : AssaultLayout.Default;
+        public static string SavePath => PathFor(CurrentLayout);
+        public static string PathFor(AssaultLayout layout) => Path.Combine(Application.persistentDataPath, layout.SaveFileName);
         private float nextSave;
         [Serializable] public sealed class Snapshot
         {
-            public int version = 3;
+            public int version = 4;
+            public string layoutId;
             public long utcTicks;
             public ResourceBag blue, red, cargo;
             public Vector3 playerPosition;
@@ -47,8 +49,8 @@ namespace Siphon
             if (!Smoke)
             {
                 if (FreshWar) { FreshWar = false; if (!Application.isEditor) Save(false); }
-                else if (!Application.isEditor || pendingLoad) Load();
-                pendingLoad = false;
+                else if (!Application.isEditor || pendingLoadLayout == CurrentLayout.Id) Load();
+                pendingLoadLayout = null;
             }
             nextSave = Time.time + 30;
         }
@@ -56,20 +58,33 @@ namespace Siphon
         {
             if (Smoke) return;
             if (Input.GetKeyDown(KeyCode.F5)) Save(true);
-            if (Input.GetKeyDown(KeyCode.F9) && File.Exists(SavePath))
-            {
-                // Reload the scene before restoring agent state; transient shots are discarded.
-                pendingLoad = true;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
+            if (Input.GetKeyDown(KeyCode.F9)) RequestLoad();
             if (!Application.isEditor && Time.time >= nextSave) { nextSave = Time.time + 30; Save(false); }
+        }
+        // Shared by F9 and automation; reject incompatible saves before resetting the world.
+        public bool RequestLoad()
+        {
+            if (Smoke || !File.Exists(SavePath)) return false;
+            try
+            {
+                ReadSnapshot(SavePath, out _);
+                pendingLoadLayout = CurrentLayout.Id;
+                WarDirector.ReloadActiveScene();
+                return true;
+            }
+            catch (Exception error)
+            {
+                pendingLoadLayout = null;
+                Debug.LogWarning("Could not load local war: " + error.Message);
+                return false;
+            }
         }
         private void OnApplicationQuit() { if (!Application.isEditor && !Smoke) Save(false); }
         public static Snapshot Capture()
         {
             var war = WarDirector.Instance; var player = UnityEngine.Object.FindAnyObjectByType<PlayerCombat>();
             if (war == null || player == null) return null;
-            var snapshot = new Snapshot { utcTicks = DateTime.UtcNow.Ticks, blue = war.StockBag(Team.Blue), red = war.StockBag(Team.Red),
+            var snapshot = new Snapshot { layoutId = war.Layout.Id, utcTicks = DateTime.UtcNow.Ticks, blue = war.StockBag(Team.Blue), red = war.StockBag(Team.Red),
                 cargo = player.CargoBag, playerPosition = player.transform.position, playerHealth = player.Entity.health,
                 thermal = player.Gear.thermalLining, optics = player.Gear.surveyOptics, engineering = player.Gear.fieldEngineering,
                 finished = war.Finished, winner = war.Winner, capacitor = player.Gear.wardenCapacitor, carriedRelic = player.CarryingRelic, cloak = player.Gear.cloakWeave, siegeResearch = player.Gear.siegeCalibration, blueOrder = war.BlueOrder,
@@ -109,7 +124,7 @@ namespace Siphon
             if (File.Exists(path))
             {
                 bool previousValid = true;
-                try { ParseSnapshot(File.ReadAllText(path)); } catch { previousValid = false; }
+                try { var previous = ParseSnapshot(File.ReadAllText(path)); previousValid = EffectiveLayoutId(previous) == EffectiveLayoutId(snapshot); } catch { previousValid = false; }
                 // A recovered checkpoint must not replace the healthy backup with
                 // the damaged file on its next autosave.
                 File.Replace(path + ".tmp", path, previousValid ? path + ".bak" : null);
@@ -128,17 +143,22 @@ namespace Siphon
             }
             catch (Exception error) { Debug.LogWarning("Could not load local war: " + error.Message); }
         }
-        public static Snapshot ReadSnapshot(string path, out bool recovered)
+        public static Snapshot ReadSnapshot(string path, out bool recovered, AssaultLayout layout = null)
         {
             recovered = false;
-            try { return ParseSnapshot(File.ReadAllText(path)); }
+            Snapshot snapshot;
+            try { snapshot = ParseSnapshot(File.ReadAllText(path)); }
             catch (Exception) when (File.Exists(path + ".bak"))
-            { var snapshot = ParseSnapshot(File.ReadAllText(path + ".bak")); recovered = true; return snapshot; }
+            { snapshot = ParseSnapshot(File.ReadAllText(path + ".bak")); recovered = true; }
+            // Identity mismatch is not corruption: never hide it by trying another layout's backup.
+            RequireLayout(snapshot, layout ?? CurrentLayout);
+            return snapshot;
         }
         private static Snapshot ParseSnapshot(string json)
         {
             var snapshot = JsonUtility.FromJson<Snapshot>(json);
-            if (snapshot == null || (snapshot.version < 1 || snapshot.version > 3) || snapshot.utcTicks <= 0
+            if (snapshot == null || (snapshot.version < 1 || snapshot.version > 4) || snapshot.utcTicks <= 0
+                || (snapshot.version >= 4 && string.IsNullOrEmpty(snapshot.layoutId))
                 || snapshot.utcTicks > DateTime.MaxValue.Ticks || snapshot.structures == null || snapshot.nodes == null
                 || snapshot.structures.Count > 10000 || snapshot.nodes.Count == 0 || snapshot.nodes.Count > 10000
                 || !snapshot.blue.Valid || !snapshot.red.Valid || !snapshot.cargo.Valid
@@ -170,6 +190,13 @@ namespace Siphon
                 throw new InvalidDataException("Invalid saved boss.");
             return snapshot;
         }
+        private static string EffectiveLayoutId(Snapshot snapshot) =>
+            string.IsNullOrEmpty(snapshot.layoutId) && snapshot.version <= 3 ? AssaultLayout.DefaultId : snapshot.layoutId;
+        private static void RequireLayout(Snapshot snapshot, AssaultLayout layout)
+        {
+            if (snapshot == null || EffectiveLayoutId(snapshot) != layout.Id)
+                throw new InvalidDataException("Checkpoint belongs to a different assault layout.");
+        }
         private static bool Finite(float value) => !float.IsNaN(value) && !float.IsInfinity(value);
         private static bool Finite(Vector3 value) => Finite(value.x) && Finite(value.y) && Finite(value.z);
         public static void SimulateOffline(Snapshot snapshot, double seconds)
@@ -198,8 +225,9 @@ namespace Siphon
         }
         public static void Apply(Snapshot snapshot, double offlineSeconds = 0)
         {
-            SimulateOffline(snapshot, offlineSeconds);
             var war = WarDirector.Instance;
+            RequireLayout(snapshot, war != null ? war.Layout : AssaultLayout.Default);
+            SimulateOffline(snapshot, offlineSeconds);
             war.blueResources = snapshot.blue.ferrite; war.blueTimber = snapshot.blue.timber; war.blueCrystal = snapshot.blue.crystal; war.blueAlloy = snapshot.blue.alloy;
             war.redResources = snapshot.red.ferrite; war.redTimber = snapshot.red.timber; war.redCrystal = snapshot.red.crystal; war.redAlloy = snapshot.red.alloy;
             foreach (var actor in Combatant.All.ToArray())
@@ -237,7 +265,7 @@ namespace Siphon
             player.Gear.thermalLining = snapshot.thermal; player.Gear.surveyOptics = snapshot.optics; player.Gear.fieldEngineering = snapshot.engineering;
             player.Entity.health = snapshot.playerHealth > 0 ? Mathf.Clamp(snapshot.playerHealth, 1, player.Entity.maximumHealth) : player.Entity.maximumHealth;
             Vector3 position = snapshot.playerHealth > 0 ? snapshot.playerPosition : war.RespawnPoint(Team.Blue, true);
-            if (AssaultLayout.Default.Outside(position, AssaultLayout.Default.SaveInset) || float.IsNaN(position.y)) position = war.blueSpawn;
+            if (war.Layout.Outside(position, war.Layout.SaveInset) || float.IsNaN(position.y)) position = war.blueSpawn;
             position.y = Mathf.Max(position.y, WarDirector.GroundPoint(position).y + 0.2f);
             player.GetComponent<PlaygroundPlayer>().ResetTo(position, Quaternion.identity);
             if (snapshot.bots != null)

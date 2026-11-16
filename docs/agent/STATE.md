@@ -4,15 +4,15 @@ Updated 2026-11-15. Read this first, then [current task](CURRENT-TASK.md). ROADM
 
 ## Completed slice
 
-M01 foundation: one immutable 600m AssaultLayout definition now feeds builder, navigation/defaults, base/spawn/camp anchors, bot recovery/restore, target validation, HUD projection and player-save bounds. Current map remains 600m. Accepted movement, weapon damage/cadence and save schema unchanged; movement lab untouched. Fresh Sol implementation plus separate fresh Sol review completed; no actionable findings. [Dependency plan](../maps/M01-PLAN.md), [briefing](../briefings/2026-11-15-layout.md), exact commands/results and [build hashes](../maps/M01-BUILD.json) in CURRENT-TASK.
+M01 candidate isolation: opt-in **600m clone**, separate scene/mesh/navigation/build/save identity `assault-candidate600-v1`; default scene/generated assets, movement tuning, weapon source and lab unchanged. v4 saves record identity, legacy no-ID saves load only on default, cross-layout primary/backup restores reject before mutation. Candidate editor reload and restart exercised. [Briefing](../briefings/2026-11-15-candidate.md), [exact checks](../maps/M01-CANDIDATE-CHECKS.md), [build provenance](../maps/M01-CANDIDATE-BUILD.json).
 
-Sequential generation/runtime edge checks, existing FieldValidation, Linux candidate build and 25s actual-player smoke all passed exit 0. Save compatibility/nav/economy/respawn checks passed;145 nav searches/0 failures and switching/firing/recoil passed. Screenshot inspected: unchanged 600m baseline and accepted rifle. Full movement validator was not rerun. Candidate is Builds/SiphonCandidate; original Builds/Siphon untouched.
+Targeted generation/persistence/reload validator exit 0; default FieldValidation exit 0; separate Linux build exit 0; rendered 25s smoke exit 0, 19 bots/four deliveries/153 navigation searches/zero failures, weapon switching/firing/recoil passed. Screenshot inspected. Full movement validator not rerun. Xvfb/llvmpipe is not performance evidence. Candidate output Builds/SiphonMapCandidate600; existing builds untouched. No 2km geometry or reachability claim.
 
-GitHub-facing [UPDATES.md](../../UPDATES.md) holds showcases/briefing archive; README and dated briefings link it. Commit screenshots/briefings together with relative links and keep showcase images in regular Git. GitHub Markdown API render passed; this is not a hosted Pages site or downloadable release.
+GitHub-facing UPDATES.md links briefings/screenshots in regular Git. Fresh Sol implementation, separate initial review and uninvolved independent follow-up source review completed. Initial scene-index assumption corrected against actual engine behavior; final outcome tests passed. Hosted reviews pending on this PR.
 
 ## Next action
 
-M01 opt-in larger-map candidate: isolate scene, generated mesh/navigation and save/layout identity before moving content. Exact next command `git status --short`; then read CURRENT-TASK and M01-PLAN. Proposed 2km × 2km,1km base gap and tile budgets remain provisional. Measure both-direction routes, recovery/seams/reachability and performance before accepting dimensions. Preserve 600m baseline, rifle and movement lab.
+Finish publishing candidate isolation with both advisory hosted reviews; record actual findings/coverage and resolve concrete issues. Then select one bounded terrain-expansion slice using [M01 plan](../maps/M01-PLAN.md), with new layout/save identity before geometry changes. Proposed 2km dimensions and tile budgets remain provisional. Preserve accepted 600m map, rifle and movement lab. Measure routes/seams/recovery/performance before accepting expansion.
 
 ## Access and workflow
 
@@ -26,4 +26,4 @@ W03 complete: PR-Agent and Alibaba OpenCodeReview enabled for internal non-draft
 
 ## Handoff
 
-Implementation and independent review completed sequentially with fresh Sol agents. Final PR-Agent host-only settings moved into trusted workflow environment after local loader/config checks; no third paid trial was run for that placement correction. No model or asset jobs in flight. Check actual Git status: user-modified `.envrc` and pre-existing untracked `.vscode/` remain untouched and uncommitted. No blocker or human playtest request. Next exact command: `git status --short`, then read CURRENT-TASK and the named M01 plan before selecting the next bounded worker task.
+Candidate isolation on feat/map-candidate-isolation, base b6f71c1. Engine tests/build/smoke and independent reviews complete; no model/asset jobs in flight yet. Next exact command: `git status --short`, then publish reviewed slice and open its PR to run both hosted reviewers. Preserve user-modified `.envrc` and pre-existing untracked `.vscode/`, untouched and uncommitted. No blocker or human playtest request. Source/generated assets, screenshot, docs and .meta pairs must be committed together; build artifacts/logs ignored. Check actual Git status before integration.

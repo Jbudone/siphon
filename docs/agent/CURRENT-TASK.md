@@ -1,18 +1,9 @@
-# W03 — paired hosted review trial complete
+# M01 — isolated candidate verified, publication pending
 
-Status: Done. User requested both PR-Agent and Alibaba OpenCodeReview for later comparison. Both are enabled on internal non-draft PRs, share the initial OpenRouter model alias, and remain advisory. Root configured Actions OPENROUTER_API_KEY from existing direnv without exposing it. User-modified `.envrc` and pre-existing `.vscode/` remain untouched and unstaged.
+Base `b6f71c1`, branch `feat/map-candidate-isolation`. Separate 600m clone scene/generated assets/build/save identity; no expanded terrain. Read [checks](../maps/M01-CANDIDATE-CHECKS.md) and [build provenance](../maps/M01-CANDIDATE-BUILD.json) for exact commands/results and limits. [Briefing](../briefings/2026-11-15-candidate.md).
 
-## Evidence
+Fresh Sol worker candidate_isolation implemented; separate candidate_isolation_review found excluded-scene reload risk; implementation fixed; uninvolved host_env_audit reviewed final fix (new thread unavailable). Targeted generation/persistence/reload validator exit0; default FieldValidation exit0 before reload fix; isolated Linux build exit0; rendered25s smoke exit0. Accepted source asset bytes unchanged. Initial follow-up validator compile/API and incorrect index assertion failures retained in evidence; final passes supersede those attempts. No outstanding source review findings.
 
-- [Trial 001](../reviews/trial-001.md): PR #1, base `1cc509d`, head `275642e`. PR-Agent posted no major issues; OCR was partial despite a green job because its projected usage guard prevented ten C# files being dispatched. Raw results preserved.
-- [Trial 002](../reviews/trial-002.md): PR #2, same base, head `7c96685`. PR-Agent run `43783375052` and OCR run `43783374966` succeeded. OCR manifest complete: 13 selected/completed, 0 failed/reused/waived, ten C# files included. Both posted no major findings. PR-Agent pruned its diff under the 16000 context cap; full or equal coverage is not proven. No winner or exact cost claim.
-- Replay PRs closed without merging; branches retained. [Review index](../reviews/README.md) links committed machine reports and comments. OCR artifacts also retained for 90 days.
-- OCR guard now 300000, with manifest verification after artifact upload. Missing, partial, failed, waived or unaccounted coverage fails the job; findings remain advisory. Final PR-Agent retry/auto-approval settings moved from ignored repo keys to trusted workflow env. That placement fix passed local loader checks; no third billable trial.
+Next exact command `git status --short`, then commit/push explicit source/generated/meta/docs/screenshot paths and open a PR to exercise both hosted advisory tools. Record actual reports/coverage and resolve concrete findings before integration. Do not claim successful hosted reviews until observed. No paid asset jobs; no Unity process left. User `.envrc` modified and `.vscode/` untracked, untouched/uncommitted.
 
-Fresh Sol implementation and separate fresh Sol reviews completed. Checks: actionlint 1.7.11 for both workflows; TOML/YAML/JSON/schema and runtime pin checks; coverage checker against actual partial report and synthetic complete/empty/waived/unaccounted cases; exact Dynaconf 3.3.5 loader test for host-only env settings. No new Unity build or gameplay source changes in W03. Existing game evidence is historical, in [layout briefing](../briefings/2026-11-15-layout.md) and [build record](../maps/M01-BUILD.json).
-
-## Next slice
-
-Resume M01 opt-in larger-map candidate using [M01 plan](../maps/M01-PLAN.md). Isolate scene, generated mesh/navigation and save/layout identity before moving content. Preserve accepted 600m layout, movement/weapons and movement lab. Proposed 2km dimensions remain provisional until route/performance measurement.
-
-Exact next command: `git status --short`, then read `docs/maps/M01-PLAN.md` and select one bounded implementation slice. No active model/asset jobs, no blocker and no human retest request. `.envrc` and `.vscode/` belong to the user; do not stage them.
+Following slice: deliberate opt-in terrain expansion, new layout/save identity, separate assets. Follow [M01 plan](../maps/M01-PLAN.md), audit remaining default-layout consumers and bot objectives/respawn positions, and measure seams/routes/recovery/navigation timings. Keep default 600m baseline, accepted movement/weapons and quiet lab. No human retest request.

@@ -5,13 +5,14 @@ namespace Siphon.Editor
 {
     public static class NavigationBaker
     {
-        public static void Bake()
+        public const string DefaultPath = "Assets/Siphon/Settings/FieldNavigation.asset";
+        public const string CandidatePath = "Assets/Siphon/Settings/Candidate600Navigation.asset";
+        public static void Bake() => Bake(AssaultLayout.Default, DefaultPath);
+        public static void Bake(AssaultLayout layout, string path)
         {
-            const string path = "Assets/Siphon/Settings/FieldNavigation.asset";
             var field = AssetDatabase.LoadAssetAtPath<NavigationField>(path);
             bool fresh = field == null;
             if (fresh) field = ScriptableObject.CreateInstance<NavigationField>();
-            var layout = AssaultLayout.Default;
             field.width = layout.NavigationWidth; field.cellSize = layout.NavigationSpacing; field.origin = layout.Minimum;
             field.heights = new float[field.Count]; field.walkable = new bool[field.Count];
             Physics.SyncTransforms();

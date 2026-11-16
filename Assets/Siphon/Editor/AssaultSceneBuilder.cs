@@ -8,10 +8,17 @@ namespace Siphon.Editor
     public static class AssaultSceneBuilder
     {
         public const string ScenePath = "Assets/Siphon/Scenes/AssaultPlayground.unity";
-        public static void Build()
+        public const string MeshPath = "Assets/Siphon/Meshes/Field.asset";
+        public const string CandidateScenePath = "Assets/Siphon/Scenes/AssaultCandidate600.unity";
+        public const string CandidateMeshPath = "Assets/Siphon/Meshes/Candidate600.asset";
+        public static void Build() => Build(AssaultLayout.Default, ScenePath, MeshPath, NavigationBaker.DefaultPath, false);
+        [MenuItem("Siphon/Generate isolated 600m candidate")]
+        public static void BuildCandidate() => Build(AssaultLayout.Candidate, CandidateScenePath, CandidateMeshPath, NavigationBaker.CandidatePath, true);
+        private static void Build(AssaultLayout layout, string scenePath, string meshPath, string navigationPath, bool candidate)
         {
+            Material Material(string name, Color color) => LoadMaterial(name, color, candidate);
             Directory.CreateDirectory("Assets/Siphon/Meshes");
-            RenderSetup.Configure();
+            if (!candidate) RenderSetup.Configure();
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             var forest = Material("Forest", new Color(0.2f, 0.35f, 0.27f));
             var valley = Material("Valley", new Color(0.34f, 0.4f, 0.36f));
@@ -23,15 +30,16 @@ namespace Siphon.Editor
             var leaves = Material("Leaves", new Color(0.08f, 0.26f, 0.2f));
             var ore = Material("Ferrite", new Color(0.9f, 0.65f, 0.17f));
             var rare = Material("Crystal", new Color(0.7f, 0.24f, 0.95f));
-            MakeTerrain(new[] { forest, valley, snow });
+            MakeTerrain(new[] { forest, valley, snow }, layout, meshPath);
             var war = new GameObject("War captain").AddComponent<WarDirector>();
+            war.layoutId = layout.Id;
             war.gameObject.AddComponent<StandaloneSmokeCheck>();
             war.gameObject.AddComponent<FieldSaveSystem>();
             war.blueMaterial = blue; war.redMaterial = red; war.darkMaterial = dark; war.wildMaterial = rare;
-            war.blueSpawn = Point(AssaultLayout.Default.BlueSpawn) + Vector3.up;
-            war.redSpawn = Point(AssaultLayout.Default.RedSpawn) + Vector3.up;
-            BuildBase(war, Team.Blue, AssaultLayout.Default.BlueBase, blue, dark);
-            BuildBase(war, Team.Red, AssaultLayout.Default.RedBase, red, dark);
+            war.blueSpawn = Point(layout.BlueSpawn) + Vector3.up;
+            war.redSpawn = Point(layout.RedSpawn) + Vector3.up;
+            BuildBase(war, Team.Blue, layout.BlueBase, blue, dark);
+            BuildBase(war, Team.Red, layout.RedBase, red, dark);
             for (int i = 0; i < 5; i++)
             {
                 float z = -70 + i * 35;
@@ -92,8 +100,8 @@ namespace Siphon.Editor
                 rock.transform.rotation = Quaternion.Euler(0, i * 27, 15);
                 rock.GetComponent<Renderer>().sharedMaterial = snow;
             }
-            BuildCamp("Frost vault", Point(AssaultLayout.Default.FrostCamp), snow, rare, dark, true);
-            BuildCamp("Forest relay ruins", Point(AssaultLayout.Default.ForestCamp), wood, rare, dark, false);
+            BuildCamp("Frost vault", Point(layout.FrostCamp), snow, rare, dark, true);
+            BuildCamp("Forest relay ruins", Point(layout.ForestCamp), wood, rare, dark, false);
             var player = new GameObject("Player");
             player.layer = 8;
             player.transform.position = war.blueSpawn;
@@ -135,17 +143,21 @@ namespace Siphon.Editor
             RenderSettings.fog = true; RenderSettings.fogMode = FogMode.Exponential;
             RenderSettings.fogDensity = 0.0018f; RenderSettings.fogColor = new Color(0.55f, 0.68f, 0.75f);
             var sky = AssetDatabase.LoadAssetAtPath<Material>("Assets/Siphon/Materials/Field sky.mat");
+            if (sky == null && candidate) throw new System.InvalidOperationException("Generate default presentation assets first.");
             if (sky == null)
             {
                 sky = new Material(Shader.Find("Skybox/Procedural"));
                 AssetDatabase.CreateAsset(sky, "Assets/Siphon/Materials/Field sky.mat");
             }
-            sky.SetColor("_SkyTint", new Color(0.4f, 0.6f, 0.8f));
-            sky.SetFloat("_AtmosphereThickness", 0.8f);
+            if (!candidate)
+            {
+                sky.SetColor("_SkyTint", new Color(0.4f, 0.6f, 0.8f));
+                sky.SetFloat("_AtmosphereThickness", 0.8f);
+            }
             RenderSettings.skybox = sky;
-            QualitySettings.shadowDistance = 160;
-            NavigationBaker.Bake();
-            EditorSceneManager.SaveScene(scene, ScenePath);
+            if (!candidate) QualitySettings.shadowDistance = 160;
+            NavigationBaker.Bake(layout, navigationPath);
+            EditorSceneManager.SaveScene(scene, scenePath);
             AssetDatabase.SaveAssets();
             Debug.Log("Siphon assault scene generated successfully.");
         }
@@ -221,10 +233,10 @@ namespace Siphon.Editor
             float baseFlat = Mathf.Clamp01((Mathf.Abs(z) - 145) / 25) * (1 - Mathf.Clamp01((edge - 35) / 30));
             return Mathf.Lerp((ridge + hills) * centralFlat, 0, baseFlat);
         }
-        private static void MakeTerrain(Material[] materials)
+        private static void MakeTerrain(Material[] materials, AssaultLayout layout, string path)
         {
-            int cells = AssaultLayout.Default.TerrainCells;
-            float size = AssaultLayout.Default.Size;
+            int cells = layout.TerrainCells;
+            float size = layout.Size;
             var vertices = new Vector3[(cells + 1) * (cells + 1)];
             var uv = new Vector2[vertices.Length];
             var triangles = new System.Collections.Generic.List<int>[]
@@ -240,7 +252,6 @@ namespace Siphon.Editor
                     list.Add(i); list.Add(i + cells + 1); list.Add(i + 1);
                     list.Add(i + 1); list.Add(i + cells + 1); list.Add(i + cells + 2);
                 }
-            const string path = "Assets/Siphon/Meshes/Field.asset";
             var mesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
             bool fresh = mesh == null;
             if (fresh) mesh = new Mesh { name = "Field terrain" }; else mesh.Clear();
@@ -254,10 +265,11 @@ namespace Siphon.Editor
             ground.AddComponent<MeshRenderer>().sharedMaterials = materials;
             ground.AddComponent<MeshCollider>().sharedMesh = mesh;
         }
-        private static Material Material(string name, Color color)
+        private static Material LoadMaterial(string name, Color color, bool readOnly)
         {
             string path = "Assets/Siphon/Materials/" + name + ".mat";
             var material = AssetDatabase.LoadAssetAtPath<Material>(path);
+            if (readOnly) return material != null ? material : throw new System.InvalidOperationException("Missing shared candidate material: " + path);
             if (material == null) { material = new Material(Shader.Find(RenderSetup.LitShader)); AssetDatabase.CreateAsset(material, path); }
             material.color = color;
             material.SetFloat("_Smoothness", 0.15f);
